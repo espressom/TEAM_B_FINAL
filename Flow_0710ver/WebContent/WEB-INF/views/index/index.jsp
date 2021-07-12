@@ -20,7 +20,7 @@
 				<div class="visualMove">
 					<span class="img02"></span>
 				</div>
-				<strong>쉬운 공시정보 활용</strong> <span class="txt">OPEN DART는 쉽게
+				<strong>미림리밀림림ㄹ  쉬운 공시정보 활용</strong> <span class="txt">OPEN DART는 쉽게
 					공시정보를 활용할 수 있도록 이용자 수준에 맞춘 <br />다양한 방식으로 공시정보를 개방합니다.(오픈API,
 					XBRL, EXCEL, TXT 등)
 				</span>

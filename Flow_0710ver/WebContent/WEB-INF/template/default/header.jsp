@@ -9,8 +9,16 @@
 				<h1><a href="/"><img src="resources/images/logo.png" alt="¿ÀÇÂ´ÙÆ® ·Î°í"/></a></h1>
 				<div class="util_menu">
 				<form name="selectOne" method="post">
-					<ul>	
-								<li><a href='/uat/uia/egovLoginUsr.do'>LOGIN</a></li>
+					<ul>
+					<c:choose>
+			  		<c:when test="${sessionScope.sessionID == null}">
+						<li><a href='loginForm'>LOGIN</a></li>
+					</c:when>
+					<c:when test="${sessionScope.sessionID != null}">
+						<li>${sessionScope.sessionName}´Ô ¹Ý°©½À´Ï´Ù</li>
+						<li><a href='logout'>LOGOUT</a></li>
+					</c:when>
+					</c:choose>	
 						<li><a href="/sitemap/main.do">SITE MAP</a></li>
 					</ul>
 					</form>

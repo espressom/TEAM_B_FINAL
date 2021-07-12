@@ -1,4 +1,4 @@
-
+/* ∆€∫Ì∏ÆΩÃ « ºˆ ∞¯≈Îøµø™ */
 @charset "utf-8";
 
 @import url('web.css');
@@ -9,25 +9,25 @@
 html {height:100%;}
 div, p, ul, li, table, th, td, textarea, input,  form, h1, h2, h3, h4, h5, h6, dt, dl, dd, em, address, cite,
 ul, ol, dl, dd, dt, li {list-style-type:none;margin:0;padding:0px;color:#444;}
-body {width:100%;height:100%;margin-top:0px;padding:0px;font-family:"ÎßëÏùÄ Í≥†Îîï", "Malgun Gothic", sans-serif;font-size:14px;color:#444444;line-height:170%;font-weight:normal;overflow-Y:scroll;*overflow-Y:;}
+body {width:100%;height:100%;margin:0px;padding:0px;font-family:"∏º¿∫ ∞ÌµÒ", "Malgun Gothic", sans-serif;font-size:14px;color:#444444;line-height:170%;font-weight:normal;overflow-Y:scroll;*overflow-Y:;}
 button {padding:0;margin:0;background-color:transparent;color:#ffffff;border:none;outline:none !important;}
 caption{overflow:hidden;width:0;height:0;font-size:0;text-indent:-9999em}
 
-
+/* ∏µ≈© */
 a {text-decoration:none;color:#000000;}
 a:link, a:visited {text-decoration:none;color:#000000;}
 a:hover, a:focus, a:active {text-decoration:none;color:#138fe6;}
 a:focus, img:focus {outline:none;}
 
-
+/* ∑π¿ÃæÓ ∏∂Ω∫≈© */
 .layer_mask {position:fixed;top:0px;left:0px;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:300;}
 
-
+/* ¡§∑ƒ */
 .vat {vertical-align:top !important;}
 .vam {vertical-align:middle !important;}
 .vab {vertical-align:bottom !important;}
 
-
+/* ≈ÿΩ∫∆Æ ƒ√∑Ø */
 .em {color:#0086d3; font-weight:700; !important}
 
 .tl{text-align:left !important}

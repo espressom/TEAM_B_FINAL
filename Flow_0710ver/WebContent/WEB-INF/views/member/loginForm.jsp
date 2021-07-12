@@ -193,11 +193,17 @@ function fnShowLogin(stat) {
 	</div>
 	
 	<div class="loginBottom">
+		<div class="accountWrap">
+			<div class="btnWrap">
+				<button class="accountBtn" type="button" onclick="goRegiUsr(); return false;">인증키 신청</button>
+			</div>
+			<span class="exp"><p>인증키 신청을 하시면 </p><p>API서비스를 이용하실 수 있습니다.</p></span>
+		</div>
 		<div class="findWrap">
 			<div class="btnWrap">
-				<button class="findBtn" type="button" onclick="goFindUsr(); return false;">아이디 / 비밀번호 찾기</button>
+				<button class="findBtn" type="button" onclick="goFindUsr(); return false;">이메일 / 비밀번호 찾기</button>
 			</div>
-			<span class="exp"><p>아이디 또는 비밀번호를</p><p> 잊으셨나요? </p></span>
+			<span class="exp"><p>이메일 또는 비밀번호를</p><p> 잊으셨나요? </p></span>
 		</div>
 	</div>
 	

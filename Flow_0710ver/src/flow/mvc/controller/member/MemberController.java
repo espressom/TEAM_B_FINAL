@@ -50,7 +50,7 @@ public class MemberController {
 	@GetMapping("/logout")
 	public ModelAndView logoutProcess(HttpSession session, HttpServletRequest request, MemberVO mvo) {
 		System.out.println("MemberController  - logoutProcess 진입");
-		System.out.println("id값  : " + session.getAttribute("sessionID"));
+		System.out.println("로그아웃 할 id값  : " + session.getAttribute("sessionID"));
 		
 		session.removeAttribute("sessionID");
 		session.removeAttribute("sessionName");

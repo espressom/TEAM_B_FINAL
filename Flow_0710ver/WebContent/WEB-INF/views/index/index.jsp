@@ -12,7 +12,7 @@
 				<div class="visualMove">
 					<span class="img01"></span>
 				</div>
-				<strong>공시정보 활용의 장</strong> <span class="txt">OPEN DART는
+				<strong>공시정보 활용의 장 TG_TEST</strong> <span class="txt">OPEN DART는
 					DART에서 조회할수있는 모든 공시정보를 누구든지<br /> 직접 활용할 수 있도록 개방하는 서비스 입니다.
 				</span>
 			</div>

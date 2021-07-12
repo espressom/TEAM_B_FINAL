@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class Advice {
+	
+	// advice ¼öÁ¤
 
 	private void printParam(ProceedingJoinPoint pjp) {
 		Object[] param = pjp.getArgs();

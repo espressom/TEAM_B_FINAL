@@ -12,27 +12,27 @@
               <h3 class="login-heading mb-4">Welcome back!</h3>
               <form>
                 <div class="form-label-group">
-                  <input type="text" id="inputID" class="form-control" placeholder="ID" required autofocus>
+                  <span>아이디</span><input type="text" id="inputID" class="form-control" placeholder="ID" required autofocus>
                   <label for="inputID">ID</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <span>비밀번호</span><input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
+                  <span>이름</span><input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
                   <label for="inputEmail">Name</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" id="inputjumin" class="form-control" placeholder="Jumin number" required autofocus>
+                  <span>주민번호</span><input type="text" id="inputjumin" class="form-control" placeholder="Jumin number" required autofocus>
                   <label for="inputJumin">Jumin</label>
                 </div>
                 
                 <div class="form-label-group">
-                  <input type="text" id="inputjumin" class="form-control" placeholder="Phone Number" required autofocus>
+                  <span>휴대전화</span><input type="text" id="inputPnum" class="form-control" placeholder="Phone Number" required autofocus>
                   <label for="inputPnum">Phone Number</label>
                 </div>
 
@@ -43,8 +43,6 @@
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
                 <div class="text-center">
                   <a class="small" href="#">Forgot password?</a></div>
-                  <p>commit용</p>
-                  <p>commit용2</p>
               </form>
             </div>
           </div>

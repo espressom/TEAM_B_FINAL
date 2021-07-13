@@ -23,7 +23,13 @@ public class MemberController {
 	@RequestMapping("/loginForm")
 	public String loginPage() {
 		System.out.println("MemberController  - login 진입");
-		return "member/loginForm";
+		return "member/login";
+	}
+	
+	@RequestMapping("/signup")
+	public String signupPage(Model m) throws FileNotFoundException, IOException {
+		System.out.println("MemberController  - signup 진입");
+		return "member/signup";
 	}
 
 	@PostMapping("/loginProcess")

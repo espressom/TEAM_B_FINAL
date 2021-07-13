@@ -1,9 +1,25 @@
 package flow.mvc.vo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class MemberVO {
 
 	private int m_num, m_division, m_tel;
 	private String m_id, m_pwd, m_name, m_jumin, m_adate;
+	
+	@Override
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
+		String result=null;
+		try {
+			result = mapper.writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	
 

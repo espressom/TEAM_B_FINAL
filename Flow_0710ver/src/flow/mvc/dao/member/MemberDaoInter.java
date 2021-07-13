@@ -4,8 +4,8 @@ import flow.mvc.vo.MemberVO;
 
 public interface MemberDaoInter {
 
-	public MemberVO loginCheck(MemberVO mvo);
+	public MemberVO loginProcess(MemberVO mvo);
 	
-	
+
 	
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import flow.mvc.dao.member.MemberDaoInter;
+import flow.mvc.service.MemberServiceInter;
 import flow.mvc.vo.MemberVO;
 
 
@@ -18,7 +19,7 @@ import flow.mvc.vo.MemberVO;
 public class MemberController {
 
 	@Autowired
-	private MemberDaoInter memberDaoInter;
+	private MemberServiceInter memberServiceInter;
 
 	@RequestMapping("/loginForm")
 	public String loginPage() {
@@ -30,13 +31,15 @@ public class MemberController {
 	public ModelAndView loginProcess(MemberVO mvo, HttpSession session, HttpServletRequest request) {
 		System.out.println("MemberController  - loginProcess 진입");
 		ModelAndView mav = new ModelAndView();
-		MemberVO loginvo = memberDaoInter.loginCheck(mvo);
+		MemberVO loginvo = memberServiceInter.loginProcess(mvo);
 		
 	
 		if (loginvo == null) {
 			System.out.println("로그인 실패");
-			// 에러페이지 띄우기
-			mav.setViewName("redirect:/");
+			
+			mav.addObject("idpwdchk", "로그인 실패. 아이디 or 패스워드를 확인해 주세요.");// 에러 문구 출력
+			mav.setViewName("member/login_err");// 에러페이지로 전송
+	   
 		} else {
 			System.out.println("로그인 성공");
 			session.setAttribute("sessionID", mvo.getM_id());

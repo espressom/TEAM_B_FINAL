@@ -15,7 +15,7 @@ public class MemberDao implements MemberDaoInter {
 	private SqlSessionTemplate ss;
 	
 	@Override
-	public MemberVO loginCheck (MemberVO mvo) {
+	public MemberVO loginProcess (MemberVO mvo) {
 		System.out.println("MemberDao : loginCheck");
 		System.out.println(mvo.getM_id());
 		System.out.println(mvo.getM_pwd());

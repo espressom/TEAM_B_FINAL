@@ -1,50 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+    
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
-  
-<!-- Mirrored from opendart.fss.or.kr/uat/uia/egovLoginUsr.do by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Jul 2021 12:29:40 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
- 
 
-<!-- 회사명 찾기 여러개 레이어 팝업 -->
-<div class="mask"></div>
-<div id="layerPop01" class="companyPop wrap">
-</div>
-
-<!-- 업종 상세 찾기 레이어 팝업 2 -->
-<div id="layerPop02" class="layerPop layerPopL">
-</div>
-
-<!-- 기업개황 레이어 팝업 -->
-<div id="layerPop03" class="layerPop layerPopL">
-</div>
-
-<!-- 회사명 찾기 단일 레이어 팝업 -->
-<div id="layerPop04" class="companyPop wrap">
-</div>
-
-<!-- 보고자 찾기 단일 레이어 팝업 -->
-<div id="layerPop05" class="companyPop wrap">
-</div>
-
-<!-- IP 변경 신청 레이어 팝업 -->
-<div id="layerPop06" class="layerPop layerPopL">
-</div>
-
-<!-- 변경 신청 내역 상세 레이어 팝업 -->
-<div id="layerPop07" class="layerPop layerPopL">
-</div>
-
-
-<div id="wrap">
- 
 <script type="text/javaScript" language="javascript">
 $(document).ready(function(){
 	
@@ -65,12 +30,12 @@ function checkLogin(userSe) {
 }
 
 function actionLogin() {
-	if (document.loginForm.id.value =="") {
+	if (document.loginForm.m_id.value =="") {
         alert("Please enter your ID."); 
-    } else if (document.loginForm.password.value =="") {
+    } else if (document.loginForm.m_pwd.value =="") {
         alert("Please enter your password."); 
     } else {
-        document.loginForm.action="/uat/uia/actionLogin.do";
+        document.loginForm.action="loginProcess";
         //document.loginForm.j_username.value = document.loginForm.userSe.value + document.loginForm.username.value;
         //document.loginForm.action="/j_spring_security_check";
         document.loginForm.submit();
@@ -165,17 +130,7 @@ function fnInit() {
     
     
 }
-
-function fnLoginTypeSelect(objName){
-
-		document.getElementById("typeGnr").className = "";
-		document.getElementById("typeEnt").className = "";
-		document.getElementById("typeUsr").className = "";
-		
-		document.getElementById(objName).className = "on";
-
-		document.loginForm.userSe.value = "GNR";
-}
+ 
 
 function fnShowLogin(stat) {
 	if (stat < 1) {	//일반로그인
@@ -205,7 +160,7 @@ function fnShowLogin(stat) {
 <div class="loginBox" onLoad="fnInit();">
 	
 	<div class="loginTop">
-		<h4><span class="em">OPEN DART</span> 에 오신 것을 환영합니다.</h4>
+		<h4><span class="em">FLOW </span> 에 오신 것을 환영합니다.</h4>
 		<span class="exp">
 			<p>원하시는 서비스를 이용하기 위해서는 로그인을 해주세요.</p>
 		</span>
@@ -217,15 +172,15 @@ function fnShowLogin(stat) {
 		</div>
 		<div class="login">
 			<div class="inputWrap">
-				<form name="loginForm" id="loginForm" action="https://opendart.fss.or.kr/uat/uia/actionLogin.do" method="post">
+				<form name="loginForm" id="loginForm" action="loginProcess" method="post">
 					<input type="hidden" id="message" name="message" value="">
 					
-					<label for="id">이메일</label>
-					<input type="text" name="id" id="id" title="이메일" placeholder="이메일" onkeypress="press(event);">
+					<label for="m_id">아이디</label>
+					<input type="text" name="m_id" id="m_id" title="Id" placeholder="Id" onkeypress="press(event);">
 					
 					
-					<label for="password">Password</label>
-					<input type="password" name="password" id="password" maxlength="20" title="Password " placeholder="Password " onkeypress="press(event);">
+					<label for="m_password">Password</label>
+					<input type="password" name="m_pwd" id="m_pwd" maxlength="20" title="Password" placeholder="Password" onkeypress="press(event);">
 					
 					<input name="userSe" type="hidden" value="GNR"/>
 					<input name="j_username" type="hidden"/>
@@ -255,14 +210,4 @@ function fnShowLogin(stat) {
 </div>
 <!-- //로그인 --> 
 
-
-			<!-- 메인컨텐츠 영역 끝 -->	
-			
-		</div>
-		</div>
-	</div>
-	
- 
-			
 </body>
-</html>

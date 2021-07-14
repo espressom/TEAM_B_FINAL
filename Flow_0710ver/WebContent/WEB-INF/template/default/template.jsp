@@ -402,7 +402,7 @@ function fnPopNoitce(){
 	</div>
 <script>
     window.dyc = {
-        "chatbotUid": "ab460da652b3967b"
+        "chatbotUid": "74407225df51a37c"
     };
 </script>
 <script async src="https://cloudturing.chat/v1.0/chat.js">

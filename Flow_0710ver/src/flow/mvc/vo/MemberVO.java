@@ -2,14 +2,6 @@ package flow.mvc.vo;
 
 public class MemberVO {
 
-	/*
-	 * m_NUM NUMBER(30) PRIMARY KEY, m_ID VARCHAR2(50) CONSTRAINT m_ID_NN NOT NULL,
-	 * m_PWD VARCHAR2(50) CONSTRAINT m_PWD_NN NOT NULL, m_NAME VARCHAR2(50)
-	 * CONSTRAINT m_NAME_NN NOT NULL, m_DIVISION NUMBER(10), m_JUMIN VARCHAR2(30),
-	 * m_tel number(30), m_ADATE DATE DEFAULT SYSDATE,
-	 * 
-	 */
-
 	private int m_num;
 	private String m_id;
 	private String m_pwd;

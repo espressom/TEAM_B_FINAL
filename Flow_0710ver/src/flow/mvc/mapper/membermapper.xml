@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<select id="idchk" parameterType="mvo" resultType="int">
+		select count(*) cnt from member where m_id=#{m_id}
+	</select>
+	
+	<insert id="signup" parameterType="mvo">
+		INSERT INTO MEMBER VALUES(
+		MEMBER_SEQ.NEXTVAL, 
+		#{m_id}, #{m_pwd}, #{m_name}, 1, #{m_jumin}, #{m_tel},
+		SYSDATE
+		)
+	</insert>
+	
+</mapper>

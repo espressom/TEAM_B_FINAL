@@ -41,9 +41,10 @@
 }
 
 .bg-image {
-  background-image: url('https://source.unsplash.com/WEQbe2jBg40/600x1200');
-  background-size: cover;
+  background-image: url('resources/images/signup/signup.png');
+  background-size: 800px;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .login-heading {

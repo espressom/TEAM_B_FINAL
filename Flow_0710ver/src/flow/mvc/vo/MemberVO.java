@@ -1,12 +1,28 @@
 package flow.mvc.vo;
 
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 public class MemberVO {
 
-	private int m_num, m_division, m_tel;
-	private String m_id, m_pwd, m_name, m_jumin, m_adate;
+	/*
+	 * m_NUM NUMBER(30) PRIMARY KEY, m_ID VARCHAR2(50) CONSTRAINT m_ID_NN NOT NULL,
+	 * m_PWD VARCHAR2(50) CONSTRAINT m_PWD_NN NOT NULL, m_NAME VARCHAR2(50)
+	 * CONSTRAINT m_NAME_NN NOT NULL, m_DIVISION NUMBER(10), m_JUMIN VARCHAR2(30),
+	 * m_tel number(30), m_ADATE DATE DEFAULT SYSDATE,
+	 * 
+	 */
+
+	private int m_num;
+	private String m_id;
+	private String m_pwd;
+	private String m_name;
+	private int m_division;
+	private String m_jumin;
+	private int m_tel;
+	private String m_adate;
 	
 	@Override
 	public String toString() {
@@ -21,27 +37,13 @@ public class MemberVO {
 		return result;
 	}
 	
-	
-
 	public int getM_num() {
 		return m_num;
 	}
 	public void setM_num(int m_num) {
 		this.m_num = m_num;
 	}
-	
-	public int getM_division() {
-		return m_division;
-	}
-	public void setM_division(int m_division) {
-		this.m_division = m_division;
-	}
-	public int getM_tel() {
-		return m_tel;
-	}
-	public void setM_tel(int m_tel) {
-		this.m_tel = m_tel;
-	}
+
 	public String getM_id() {
 		return m_id;
 	}
@@ -60,11 +62,26 @@ public class MemberVO {
 	public void setM_name(String m_name) {
 		this.m_name = m_name;
 	}
+
+	public int getM_division() {
+		return m_division;
+	}
+	public void setM_division(int m_division) {
+		this.m_division = m_division;
+	}
+
 	public String getM_jumin() {
 		return m_jumin;
 	}
 	public void setM_jumin(String m_jumin) {
 		this.m_jumin = m_jumin;
+	}
+
+	public int getM_tel() {
+		return m_tel;
+	}
+	public void setM_tel(int m_tel) {
+		this.m_tel = m_tel;
 	}
 	public String getM_adate() {
 		return m_adate;
@@ -72,6 +89,6 @@ public class MemberVO {
 	public void setM_adate(String m_adate) {
 		this.m_adate = m_adate;
 	}
-	
+
 
 }

@@ -25,6 +25,8 @@
 	<!-- 얘들 안뜨게 어케하누 -->
 	<logger name="org.apache" level="INFO" />
 	<logger name="org.springframework" level="OFF"/>
+	<logger name="org.mybatis.spring.SqlSessionUtils" level="OFF"/>
+	
 	
 	<root level="DEBUG">
 		<appender-ref ref="consoleAppender" />

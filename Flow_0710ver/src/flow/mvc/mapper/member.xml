@@ -6,7 +6,7 @@
 
 <mapper namespace="member">
 
-	<select id="loginChk" parameterType="mem" resultType="mem">
+	<select id="loginChk" parameterType="mvo" resultType="mvo">
 
 		SELECT m_name, COUNT(*) CNT
 		FROM MEMBER

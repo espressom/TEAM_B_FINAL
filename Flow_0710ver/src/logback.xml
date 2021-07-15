@@ -11,17 +11,22 @@
 			</Pattern>
 		</encoder>
 	</appender>
+<!-- 	<appender name="console-infolog" class="ch.qos.logback.core.ConsoleAppender"> -->
+<!-- 		<encoder> -->
+<!-- 			<Pattern>%d{HH:mm:ss} %-5level %m%n</Pattern> -->
+<!-- 		</encoder> -->
+<!-- 	</appender> -->
 
 
 	<logger name="flow.mvc" level="DEBUG"
 		additivity="false">
 		<appender-ref ref="consoleAppender" />
 	</logger>
-<!-- 	<logger name="org.apache" level="INFO" /> -->
-	<logger name="org.springframework" level="DEBUG" />
-
-	<!-- root는 글로벌 로거를 의미하며, 위의 logger에 해당하지 않으면 root 로거가 실행된다. -->
-	<root level="warn">
+	<!-- 얘들 안뜨게 어케하누 -->
+	<logger name="org.apache" level="INFO" />
+	<logger name="org.springframework" level="OFF"/>
+	
+	<root level="DEBUG">
 		<appender-ref ref="consoleAppender" />
 	</root>
 

@@ -13,9 +13,6 @@
 <link rel="stylesheet" type="text/css" href="resources/css/slick.css?after" />
 <link rel="stylesheet" type="text/css" href="resources/css/font.css?after" />
 <link rel="stylesheet" type="text/css" href="resources/css/web.css?after" />
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/signup.css?after" />
 <link rel="stylesheet" type="text/css" href="resources/js/jquery-ui-1.12.1/jquery-ui.min.css?after" />
 <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;," />
 <script type="text/javascript" src="resources/js/jquery-1.12.3.min.js"></script>
@@ -42,17 +39,23 @@ $(document).ready(function(){
         autoplay: true,
         autoplaySpeed: 4000
     });
+
     var currentIndex = ($('.visualSlide').slick('slickCurrentSlide'));
     setTimeout(function(){
         $('.slick-slide').eq(currentIndex+1).addClass('ts');
     }, 100);
+
+
     $('.visualSlide').on('afterChange', function(event, slick, currentSlide, nextSlide){
         $('.slick-slide').removeClass('ts').eq(currentSlide+1).addClass('ts');
     });
+
     $('.visualDots').children('li:last').after('<li class="playSetup"><button type="button">멈춤</button></li>')
+
     $('.mainVisualArea').mousemove(function(e){
 //         $('.visualMove > span').parallax(-25,e);
     });
+
     $('.playSetup > button').click(function(){
         if($(this).hasClass('play')){
             mainVisual.slick('slickPlay');
@@ -62,6 +65,7 @@ $(document).ready(function(){
             $(this).removeClass('stop').addClass('play').text('재생');
         }
     });
+
     var innoMain = $('.innoSlideMain').slick({
         fade: true,
         speed: 1000,
@@ -78,6 +82,7 @@ $(document).ready(function(){
         nextArrow: $('.btnSlideArea > .btnNext'),
         rtl: true
     });
+
     var innoRolling = $('.innoSlideRolling').slick({
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -93,10 +98,13 @@ $(document).ready(function(){
         variableWidth: true,
         rtl: true
     });
+
     mainVisualImage();
+
     $(window).resize(function(){
         mainVisualImage();
     });
+
     fnInitNoitce();
 	
 });
@@ -143,6 +151,16 @@ function closeWin(windowNum) {
 }
 function fnInitNoitce(){
 	cookiedata = document.cookie;
+/* 
+	//시스템 공지사항
+	if(document.getElementById('errorPopWrap')){
+		if (cookiedata.indexOf("notice0=done") < 0) {
+			document.getElementById('errorPopWrap').style.display = "inline";
+		} else {
+			document.getElementById('errorPopWrap').style.display = "none";
+		}
+	}
+ */
 	if(document.getElementById('mainPop01')){
 		if (cookiedata.indexOf("notice1=done") < 0) {
 			document.getElementById('mainPop01').style.display = "inline";
@@ -182,6 +200,32 @@ function fnPopNoitce(){
     function toSNS(sns, menu) {
     	var strTitle = document.title;
     	var strURL = "https://opendart.fss.or.kr/index.jsp?null";
+//     	if(menu == "110"){
+//     		strTitle = "대표이사ㆍ신고담당이사 공시서류 확인 및 서명";
+//     	} else if(menu == "120"){
+//     		strTitle = "대표이사ㆍ신고담당이사 이사의 경영진단 및 분석의견";
+//     	} else if(menu == "210"){
+//     		strTitle = "공시실무자 정기 보고서";
+//     	} else if(menu == "220"){
+//     		strTitle = "공시실무자 주요사항 보고서";
+//     	} else if(menu == "230"){
+//     		strTitle = "공시실무자 발행공시";
+//     	} else if(menu == "240"){
+//     		strTitle = "공시실무자 합병";
+//     	} else if(menu == "310"){
+//     		strTitle = "지분공시의무자 대량 보유상황 보고";
+//     	} else if(menu == "320"){
+//     		strTitle = "지분공시의무자 임원 소유상황 보고";
+//     	} else if(menu == "330"){
+//     		strTitle = "지분공시의무자 단기매매차익 반환";
+//     	} else if(menu == "400"){
+//     		strTitle = "공시업무스케쥴";
+//     	} else if(menu == "500"){
+//     		strTitle = "공시의무를 미이행시 어떤 일이 일어날까요?";
+//     	} else{
+//     		strTitle = "기업공시 길라잡이";
+//     	}
+     	//strURL = "http://dart.fss.or.kr/introduction/content1.do";
         if(sns == 'T'){
         	window.open("//twitter.com/home?status="+encodeURIComponent(strTitle) + ' ' + strURL);
         }

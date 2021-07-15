@@ -33,18 +33,7 @@
 					개방된 공시정보가 자본시장에서 올바른 투자정보를 <br />확산시킬 수 있는 기반이 되는것을 목표합니다.
 				</span>
 			</div>
-			<!-- 
-					 <div>
-                        <div class="visualMove"><span class="img04"></span></div>
-                        <strong>신속하고 투명한 전자공시</strong>
-                        <span class="txt">대한민국 기업정보의 창 다트는 세계속의 초일류 자본시장을 만들어 나가며,<br />대한민국의 대표 전자공시 시스템을 넘어 글로벌 리더로 힘차게 비상합니다.</span>
-                    </div>
-					<div>
-                        <div class="visualMove"><span class="img05"></span></div>
-                        <strong>글로벌 종합 전자공시</strong>
-                        <span class="txt">대한민국의 대표 전자공시 시스템을 넘어 글로벌 리더로 힘차게 비상합니다.<br />대한민국 기업정보의 창 다트는 세계속의 초일류 자본시장을 만들어 나갑니다.</span>
-                    </div>
-                     -->
+
 		</div>
 	</div>
 	<!-- //메인 비쥬얼 -->
@@ -52,13 +41,6 @@
 	<div id="contentsMain">
 		<!-- 메인 배너 -->
 		<div class="mainBannerWarp">
-
-
-
-
-
-
-
 			<div class="mainBanner01"
 				onclick="location.href='/uss/umt/EgovMberInsertView.do'">
 				<div class="overlay">
@@ -146,10 +128,6 @@
 						href="/cop/bbs/selectArticleList.do?bbsId=B0000000000000000001">MORE</a></span>
 				</h4>
 				<ul>
-
-
-
-
 					<li>
 						<form name="subForm" method="post"
 							action="/cop/bbs/selectArticleDetail.do" style="display: unset;">

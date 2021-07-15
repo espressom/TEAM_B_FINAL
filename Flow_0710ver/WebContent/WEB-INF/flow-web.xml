@@ -43,5 +43,12 @@
 	<property name="suffix" value=".jsp"/>
 </bean>		
 
+<!-- Interceptors -->
 
+<mvc:interceptors>
+         <mvc:interceptor>
+                  <mvc:mapping path="/selectUserInfoView" /> 
+                  <bean class="flow.mvc.interceptor.Interceptor" />
+         </mvc:interceptor>
+</mvc:interceptors>
 </beans>

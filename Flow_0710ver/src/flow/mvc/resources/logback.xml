@@ -7,18 +7,17 @@
 			<charset>UTF-8</charset>
 			<!-- 로그 메시지 패턴 -->
 			<Pattern>
-<!-- 				 -->
 			    %d{HH:mm:ss} %-5level [%c] %msg%n
 			</Pattern>
 		</encoder>
 	</appender>
 
 
-	<!-- com.victolee.logExample 아래 패키지 로그들만 consoleAppender, fileAppender 방법으로 
-		로그를 남긴다. 물론 <appender-ref ref="consoleAppender" />를 추가하여 콘솔로도 로그를 남길 수 있다. -->
+	<!-- flow.mvc 아래 패키지 로그들만 consoleAppender, fileAppender 방법으로 
+		로그를 남긴다. -->
 	<logger name="flow.mvc" level="info"
 		additivity="false">
-		<appender-ref ref="fileAppender" />
+		<appender-ref ref="consoleAppender" />
 	</logger>
 	
 <!-- 	<logger name="org.springframework" level="INFO" /> -->

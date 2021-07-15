@@ -39,13 +39,20 @@ public class MemberController {
 	}
 
 	@PostMapping("/insertmem")
-	public String insertmem(MemberVO mvo) {
+	public String insertmem(MemberVO mvo, String m_jumin1, String m_jumin2) {
+		System.out.println("MemberController  - insertmem 진입");
 
 		System.out.println("mid ::::" + mvo.getM_id());
-
+		mvo.setM_jumin(m_jumin1 + "-" + m_jumin2);
 		memberService.signup(mvo);
 		return "redirect:/";
 
+	}
+
+	@RequestMapping("/userCheckForm")
+	public String userCheck() {
+		System.out.println("------------------------ userCheckForm 접속 ------------------------");
+		return "mng/userCheckForm";
 	}
 
 	@PostMapping("/loginProcess")
@@ -80,17 +87,13 @@ public class MemberController {
 		return mav;
 	}
 
-	// session에서 ID 불러오게 만들어야함
 	@RequestMapping("/selectUserInfoView")
-	public ModelAndView userInfo() {
-		System.out.println("회원정보수정 진입");
+	public ModelAndView userInfo(HttpSession session) {
+		String userID = session.getAttribute("sessionID").toString();
 		ModelAndView mav = new ModelAndView();
+		System.out.println("회원정보수정 진입");
 		MemberVO vo = new MemberVO();
-		String userID = "admin";
 		vo = memberService.detailMem(userID);
-		System.out.println("id ::::" + vo.getM_id());
-		System.out.println("mnum ::::" + vo.getM_num());
-		// m.addAttribute("vo",vo);
 		mav.addObject("vo", vo);
 		mav.setViewName("mng/selectUserInfoView");
 		return mav;
@@ -98,11 +101,11 @@ public class MemberController {
 
 	// 비밀번호 찾기 페이지
 	@RequestMapping("/findPWD")
-	public String findpwd() {
+	public String findpwdform() {
 		System.out.println("findPWD");
 		return "member/findpwd";
 	}
-	
+
 	@RequestMapping("/findID")
 	public String findid() {
 		System.out.println("findID");
@@ -116,11 +119,17 @@ public class MemberController {
 		StringBuilder sb = new StringBuilder();
 		sb.append(jumin1).append("-");
 		sb.append(jumin2);
+		System.out.println(" -------- findPWDProcess / findPWD 접속 -------- ");
 		mvo.setM_jumin(sb.toString());
-
 		MemberVO vo = memberService.findPWD(mvo);
-		mav.addObject("vo", vo);
-		mav.setViewName("member/changepwd");
+		if (vo == null) {
+			mav.addObject("pwderr", "비밀번호 찾기에 실패 하셨습니다.");
+			mav.setViewName("member/pwdfind_err");
+		} else {
+			mav.addObject("vo", vo);
+			mav.setViewName("member/changepwd");
+		}
+
 		return mav;
 	}
 
@@ -130,6 +139,53 @@ public class MemberController {
 		memberService.changePWD(mvo);
 		System.out.println("비밀번호 변경 완료");
 		return "member/loginForm";
+	}
+
+	@RequestMapping("/memberUpdate")
+	public ModelAndView memberUpdate(MemberVO mvo) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("아이디 : " + mvo.getM_id());
+		System.out.println("비밀번호 : " + mvo.getM_pwd());
+		System.out.println("전화번호 : " + mvo.getM_tel());
+		memberService.memUpdate(mvo);
+		System.out.println("업데이트 완료");
+		mav.setViewName("redirect:/");
+		return mav;
+	}
+
+	@RequestMapping("/delMember")
+	public String delMember(HttpServletRequest request, HttpSession session) {
+		System.out.println("회원 탈퇴!");
+		// 겟방식으로 아이디 받아온다!
+		String m_id = request.getParameter("mId");
+		System.out.println("삭제 할 아이디 : " + m_id);
+		memberService.delMem(m_id);
+		System.out.println("삭제 완료");
+		session.removeAttribute("sessionID");
+		session.removeAttribute("sessionName");
+		return "redirect:/";
+	}
+
+	@PostMapping("/isvalidpwd")
+	public String validpwd(MemberVO mvo, HttpSession session) {
+		System.out.println("--------------------------- isvalidpwd 접속 ----------------------------");
+		String userid = session.getAttribute("sessionID").toString();
+		mvo.setM_id(userid);
+		System.out.println("id :::: " + mvo.getM_id());
+		System.out.println("pwd :::: " + mvo.getM_pwd());
+		int res = memberService.isValidPwd(mvo);
+		System.out.println("res :::: " + res);
+
+		if (res == 1) {
+
+			return "redirect:/selectUserInfoView";
+
+		} else {
+
+			return "redirect:/";
+
+		}
+
 	}
 
 }

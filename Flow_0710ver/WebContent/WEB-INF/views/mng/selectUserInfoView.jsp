@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+   pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <style>
 :root {
@@ -117,98 +117,118 @@
 }
 </style>
 <div class="container-fluid" style="margin-top: 100px;">
-	<div class="row no-gutter">
-		<div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-		<div class="col-md-8 col-lg-6">
-			<div class="login d-flex align-items-center py-5">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-9 col-lg-8 mx-auto">
-							<h3 class="login-heading mb-4">
-								<strong>마이페이지</strong>
-							</h3>
-							<form action="insertmem" method="post">
-								
-								<div class="form-label-group">
-									<span>아이디</span>
-									<table>
-										<tr>
-											<td style="width: 270px;"><input type="text" id="id"
-												class="form-control" name="m_id" style="color:grey; height:50px;" value ="${vo.m_id}" disabled autofocus></td>
-											
-										</tr>
-									</table>
-								</div>
+   <div class="row no-gutter">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+         <div class="login d-flex align-items-center py-5">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-9 col-lg-8 mx-auto">
+                     <h3 class="login-heading mb-4">
+                        <strong>마이페이지</strong>
+                     </h3>
+                     
+                     <form action="memberUpdate" method="post">
+                        
+                        <div class="form-label-group">
+                           <span>아이디</span>
+                           <table>
+                              <tr>
+                                 <td style="width: 270px;">
+                                 <input type="text" id="m_id"
+                                    class="form-control" name="m_id" style="color:grey; height:50px;" value ="${vo.m_id}" readonly="readonly" autofocus></td>
+                                 
+                              </tr>
+                           </table>
+                        </div>
 
-								<div class="form-label-group">
+                        <div class="form-label-group">
 
-									<table style="width: 500px;">
-										<tr>
-											<td><span>비밀번호</span></td>
-											<td><span>비밀번호 확인</span></td>
-										</tr>
-										<tr>
-											<td><input type="password" id="pwd" class="form-control"
-												style="width: 240px; height:50px;" name="m_pwd"
-												required></td>
-											<td><input type="password" id="pwd_re"
-												class="form-control"
-												onchange="test()" style="height:50px;" required></td>
-										</tr>
-										<tr>
-											<td style="height: 30px;"><span id="pwdchk"
-												name="pwdchk"></span></td>
-										</tr>
+                           <table style="width: 500px;">
+                              <tr>
+                                 <td><span>바꿀 비밀번호</span></td>
+                                 <td><span>비밀번호 확인</span></td>
+                              </tr>
+                              <tr>
+                                 <td><input type="password" id="pwd" class="form-control"
+                                    style="width: 240px; height:50px;" name="m_pwd"
+                                    required></td>
+                                 <td><input type="password" id="pwd_re"
+                                    class="form-control"
+                                    onchange="test()" style="height:50px;" required></td>
+                              </tr>
+                              <tr>
+                                 <td style="height: 30px;"><span id="pwdchk"
+                                    name="m_pwdchk"></span></td>
+                              </tr>
 
-									</table>
-								</div>
+                           </table>
+                        </div>
 
-								<div class="form-label-group">
-									<span>이름</span>
-									<table>
-										<tr>
-											<td><input type="text" id="inputName"
-												class="form-control" name="m_name" style="color:grey; height:50px;" disabled value="${vo.m_name}"
-												autofocus required></td>
-										</tr>
-									</table>
-								</div>
+                        <div class="form-label-group">
+                           <span>이름</span>
+                           <table>
+                              <tr>
+                                 <td><input type="text" id="m_name"
+                                    class="form-control" name="m_name" style="color:grey; height:50px;" disabled value="${vo.m_name}"
+                                    autofocus required></td>
+                                    
+                              </tr>
+                           </table>
+                        </div>
 
-								<div class="form-label-group">
-									<span>휴대전화</span>
-									<table>
-										<tr>
-											<td><input type="text" id="inputPnum" name="m_tel"
-												class="form-control" style="height:50px;" autofocus
-												required></td>
-										</tr>
-									</table>
+                        <div class="form-label-group">
+                           <span>휴대전화</span>
+                           <table>
+                              <tr>
+                                 <td><input type="text" id="m_tel" name="m_tel"
+                                    class="form-control" style="height:50px;" value ="${vo.m_tel}" autofocus
+                                    required></td>
+                              </tr>
+                           </table>
 
-								</div>
-								<button
-									class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-									type="submit" id="submit"
-									style="width: 200px; background-color: #0c69ef" disabled>수정하기</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        </div>
+                        
+                        <div class="form-label-group">
+                           <span>가입일시</span>
+                           <table>
+                              <tr>
+                                 <td><input type="text" id="m_adate"
+                                    class="form-control" name="m_adate" style="color:grey; height:50px;" disabled value="${vo.m_adate}"
+                                    autofocus required></td>
+                              </tr>
+                           </table>
+                        </div>
+                        
+                        
+                        <button
+                           class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                           type="submit" id="submit"
+                           style="width: 200px; background-color: #0c69ef" disabled>수정하기</button>
+                        <a href="delMember?mId=${vo.m_id}"><button
+                           class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                           type="button" id="submit"
+                           style="width: 200px; background-color: #0c69ef" disabled>탈퇴하기</button></a>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 
 <script>
-	function test() {
-		var pwd = $('#pwd').val();
-		var pwd_re = $('#pwd_re').val();
-		if (pwd != pwd_re) {
-			$('#submit').prop('disabled', true);
-			$('#pwdchk').html('비밀번호가 일치 하지 않습니다');
-		} else {
-			$('#submit').prop('disabled', false);
-			$('#pwdchk').html('비밀번호가 일치합니다');
-		}
+   function test() {
+      var pwd = $('#pwd').val();
+      var pwd_re = $('#pwd_re').val();
+      if (pwd != pwd_re) {
+         $('#submit').prop('disabled', true);
+         $('#pwdchk').html('비밀번호가 일치 하지 않습니다');
+      } else {
+         $('#submit').prop('disabled', false);
+         $('#pwdchk').html('비밀번호가 일치합니다');
+      }
 
-	}
+   }
 </script>

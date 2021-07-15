@@ -93,7 +93,7 @@
 	//-----------비번 확인------------------------
 	//----------Ajax를 통한 아이디중복 확인 ---------------------
 </script>
-<div class="container" style="margin-top: 150px;">
+<div class="container">
 	<form action="findPWDProcess" method="post">
 
 		<p></p>
@@ -101,7 +101,7 @@
 		<h1>비밀번호 찾기</h1>
 		<p></p>
 		<hr>
-		<br>
+		<label for="req">비밀번호 찾기</label><br>
 		<br> <label for="m_id"><b>아이디</b></label><br> <input
 			type="text" name="m_id" id="m_id" required style="width: 500px;"><br>
 
@@ -121,7 +121,7 @@
 			id="jumin2" maxlength="1" style="width: 260px;"><br>
 
 
-		<div class="clearfix" style="margin: 30px 0px;">
+		<div class="clearfix">
 			<button type="button" class="cancelbtn"
 				style="width: 150px; background: gray;">취소</button>
 			<button type="submit" style="width: 150px; background: #6466ea;">비밀번호

@@ -11,7 +11,7 @@ public class MemberVO {
 	private String m_name;
 	private int m_division;
 	private String m_jumin;
-	private int m_tel;
+	private String m_tel;
 	private String m_adate;
 	@Override
 	public String toString() {
@@ -62,12 +62,15 @@ public class MemberVO {
 	public void setM_jumin(String m_jumin) {
 		this.m_jumin = m_jumin;
 	}
-	public int getM_tel() {
+
+	public String getM_tel() {
 		return m_tel;
 	}
-	public void setM_tel(int m_tel) {
+
+	public void setM_tel(String m_tel) {
 		this.m_tel = m_tel;
 	}
+
 	public String getM_adate() {
 		return m_adate;
 	}

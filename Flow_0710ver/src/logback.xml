@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- 콘솔로 로그를 남김 -->
+	<appender name="consoleAppender"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+<!-- 			<charset>UTF-8</charset> -->
+			<!-- 로그 메시지 패턴 -->
+			<Pattern>
+			    %d{HH:mm:ss} %-5level [%c] %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+<!-- 	<appender name="console-infolog" class="ch.qos.logback.core.ConsoleAppender"> -->
+<!-- 		<encoder> -->
+<!-- 			<Pattern>%d{HH:mm:ss} %-5level %m%n</Pattern> -->
+<!-- 		</encoder> -->
+<!-- 	</appender> -->
+
+
+	<logger name="flow.mvc" level="DEBUG"
+		additivity="false">
+		<appender-ref ref="consoleAppender" />
+	</logger>
+	<!-- 얘들 안뜨게 어케하누 -->
+	<logger name="org.apache" level="INFO" />
+	<logger name="org.springframework" level="OFF"/>
+	<logger name="org.mybatis.spring.SqlSessionUtils" level="OFF"/>
+	
+	<logger name="jdbc.sqlonly" level="DEBUG" />
+	<logger name="jdbc.sqltiming" level="OFF" />
+	<logger name="jdbc.audit" level="OFF" />
+	<logger name="jdbc.resultset" level="OFF" />
+	<logger name="jdbc.resultsettable" level="INFO" />
+	<logger name="jdbc.connection" level="OFF" />
+	
+	<root level="INFO">
+		<appender-ref ref="consoleAppender" />
+	</root>
+
+</configuration>

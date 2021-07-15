@@ -14,4 +14,10 @@ public interface MemberDaoInter {
 
 	public void changePWD(MemberVO mvo);
 
+	public void memberUpdate(MemberVO mvo);
+
+	public void delMem(String m_id);
+
+	public int userPwdChk(MemberVO mvo);
+
 }

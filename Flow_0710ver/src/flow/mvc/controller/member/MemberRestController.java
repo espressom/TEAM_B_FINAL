@@ -18,7 +18,6 @@ public class MemberRestController {
 	
 	@GetMapping("/idchk")
 	public int idchk(String mid) throws UnsupportedEncodingException {
-		
 		System.out.println(">>> idchk ÁøÀÔ >>>");
 		
 		System.out.println("mid :::: " + mid);

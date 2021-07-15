@@ -2,15 +2,21 @@ package flow.mvc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import flow.mvc.dao.MemberDAO;
+import flow.mvc.dao.member.MemberDao;
+import flow.mvc.dao.member.MemberDaoInter;
 import flow.mvc.vo.MemberVO;
 
 @Service
+@Transactional
 public class MemberService {
+
+	@Autowired
+	private MemberDao memberdao;
 	
 	@Autowired
-	private MemberDAO memberdao;
+	private MemberDaoInter memberDaoInter;
 	
 	public int idchk(String id) {
 		System.out.println(">>> MemberService - idchk ÁøÀÔ >>>");
@@ -28,6 +34,14 @@ public class MemberService {
 		
 	}
 	
+	public MemberVO loginProcess(MemberVO mvo) {
+		return memberDaoInter.loginProcess(mvo);
+	}
 	
+	public MemberVO detailMem(String userID) {
+		
+		return memberDaoInter.detailMem(userID);
+		
+	}
 
 }

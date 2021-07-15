@@ -16,4 +16,16 @@
 		)
 	</insert>
 	
+	<select id="loginChk" parameterType="mvo" resultType="mvo">
+		SELECT m_name, COUNT(*) CNT
+		FROM MEMBER
+		WHERE m_id = #{m_id} AND m_pwd = #{m_pwd}
+		GROUP BY m_name
+	</select>
+	
+	<select id="detail" parameterType="String" resultType="mvo">
+		select M_NUM, M_ID ,M_PWD, M_NAME, M_DIVISION , M_ADATE 
+		from member where M_ID = #{userID}
+	</select>
+	
 </mapper>

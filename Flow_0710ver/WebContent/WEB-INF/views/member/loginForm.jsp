@@ -181,13 +181,13 @@
 							name="m_pwd" id="m_pwd" maxlength="20" title="Password"
 							placeholder="Password" onkeypress="press(event);">
 						<div class="btnWrap">
-							<button class="loginBtn" type="button" onclick="actionLogin();">로그인</button>
+							<button class="loginBtn" type="button" style="height: 30px; margin-right:10px;" onclick="actionLogin();">로그인</button>
 						</div>
 					</form>
 				</div>
 			<div class="findWrap">
-				<div class="btnWrap" style="color:black">
-					<a href="findID">아이디</a> / <a href="findPWD">비밀번호</a> 찾기
+				<div class="btnWrap" style="font-size: 12px;">
+					<a href="findID" style="color:black;">아이디</a> / <a href="findPWD" style="color:black">비밀번호</a> 찾기
 				</div>
 			</div>
 			</div>

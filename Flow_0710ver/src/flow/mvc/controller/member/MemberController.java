@@ -22,27 +22,23 @@ import flow.mvc.vo.MemberVO;
 
 @Controller
 public class MemberController {
+	
 
 	@Autowired
 	private MemberService memberService;
 
 	@RequestMapping("/loginForm")
 	public String loginPage() {
-		System.out.println("MemberController  - login");
 		return "member/loginForm";
 	}
 
 	@RequestMapping("/signup")
 	public String signupPage(Model m) throws FileNotFoundException, IOException {
-		System.out.println("MemberController  - signup");
 		return "member/signup";
 	}
 
 	@PostMapping("/insertmem")
 	public String insertmem(MemberVO mvo) {
-
-		System.out.println("mid ::::" + mvo.getM_id());
-
 		memberService.signup(mvo);
 		return "redirect:/";
 
@@ -50,7 +46,6 @@ public class MemberController {
 
 	@PostMapping("/loginProcess")
 	public ModelAndView loginProcess(MemberVO mvo, HttpSession session, HttpServletRequest request) {
-		System.out.println("MemberController  - loginProcess »¥·³");
 		ModelAndView mav = new ModelAndView();
 		MemberVO loginvo = memberService.loginProcess(mvo);
 
@@ -62,7 +57,6 @@ public class MemberController {
 		} else {
 			session.setAttribute("sessionID", mvo.getM_id());
 			session.setAttribute("sessionName", loginvo.getM_name());
-			System.out.println("sessionID ::::" + session.getAttribute("sessionID"));
 			mav.setViewName("redirect:/");
 		}
 
@@ -71,7 +65,6 @@ public class MemberController {
 
 	@GetMapping("/logout")
 	public ModelAndView logoutProcess(HttpSession session, HttpServletRequest request, MemberVO mvo) {
-
 		session.removeAttribute("sessionID");
 		session.removeAttribute("sessionName");
 

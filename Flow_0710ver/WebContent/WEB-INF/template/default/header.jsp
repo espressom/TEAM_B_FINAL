@@ -6,7 +6,7 @@
     <div id="header">
         <div class="headerWrap">
 			<div class="headerTop">
-				<h1><a href="/"><img src="resources/images/logo.png" alt="오픈다트 로고"/></a></h1>
+				<h1><a href="/"><img src="resources/images/flow/logo1.png" alt="FLOW 로고"/></a></h1>
 				<div class="util_menu">
 				<form name="selectOne" method="post">
 					<ul>

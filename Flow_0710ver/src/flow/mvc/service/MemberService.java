@@ -62,4 +62,17 @@ public class MemberService {
 		memberDaoInter.changePWD(mvo);
 	}
 
+	public int isValidPwd(MemberVO mvo) {
+		System.out.println("result :::: " + memberdao.userPwdChk(mvo));
+		return memberdao.userPwdChk(mvo);
+	}
+
+	public void memUpdate(MemberVO mvo) {
+		memberDaoInter.memberUpdate(mvo);
+	}
+
+	public void delMem(String m_id) {
+		memberDaoInter.delMem(m_id);
+	}
+
 }

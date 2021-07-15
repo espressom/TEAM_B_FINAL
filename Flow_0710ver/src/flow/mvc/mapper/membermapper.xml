@@ -12,7 +12,8 @@
 	<insert id="signup" parameterType="mvo">
 		INSERT INTO MEMBER VALUES(
 		MEMBER_SEQ.NEXTVAL,
-		#{m_id}, #{m_pwd}, #{m_name}, 1, #{m_jumin}, #{m_tel},
+		#{m_id}, #{m_pwd}, #{m_name}, 1, #{m_jumin},
+		#{m_tel},
 		SYSDATE
 		)
 	</insert>
@@ -28,17 +29,20 @@
 
 	<select id="detail" parameterType="String" resultType="mvo">
 		select
-		M_NUM, M_ID ,M_PWD, M_NAME, M_DIVISION , M_ADATE
-		from member where M_ID = #{userID}
+		M_NUM, M_ID ,M_PWD, M_NAME, M_DIVISION, M_TEL , M_ADATE
+		from member
+		where M_ID = #{userID}
 	</select>
 
 	<select id="findid" parameterType="mvo" resultType="mvo">
-		select m_ID, m_NAME from member
+		select m_ID,
+		m_NAME from member
 		where m_NAME=#{m_name} and m_tel=#{m_tel}
 	</select>
 
 	<select id="findpwd" parameterType="mvo" resultType="mvo">
-		select m_PWD, m_ID, m_NAME from member
+		select
+		m_PWD, m_ID, m_NAME from member
 		where m_ID=#{m_id} and m_NAME=#{m_name}
 		and m_tel=#{m_tel}
 		and m_JUMIN=#{m_jumin}
@@ -49,5 +53,19 @@
 		m_PWD=#{m_pwd}
 		where m_ID=#{m_id} and m_NAME=#{m_name}
 	</update>
+
+	<update id="memUpdate" parameterType="mvo">
+		UPDATE MEMBER SET M_PWD = #{m_pwd},M_TEL=#{m_tel}
+		WHERE M_ID = #{m_id}
+	</update>
+
+	<delete id="delMem" parameterType="String">
+		delete from member where m_id = #{m_id}
+	</delete>
+
+	<select id="userChk" parameterType="mvo" resultType="int">
+		SELECT COUNT(*) CNT FROM MEMBER
+		WHERE m_id = #{m_id} AND m_pwd = #{m_pwd}
+	</select>
 
 </mapper>

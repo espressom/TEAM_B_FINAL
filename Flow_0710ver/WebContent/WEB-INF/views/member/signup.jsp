@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+   pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <style>
 :root {
@@ -117,141 +117,145 @@
 }
 </style>
 <div class="container-fluid" style="margin-top: 100px;">
-	<div class="row no-gutter">
-		<div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-		<div class="col-md-8 col-lg-6">
-			<div class="login d-flex align-items-center py-5">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-9 col-lg-8 mx-auto">
-							<h3 class="login-heading mb-4">
-								<strong>회원가입</strong>
-							</h3>
-							<form action="insertmem" method="post">
-								
-								<div class="form-label-group">
-									<span>아이디</span>
-									<table>
-										<tr>
-											<td style="width: 270px;"><input type="text" id="id"
-												class="form-control" name="m_id" required autofocus style="height:50px;"></td>
-											<td><input type="button"
-												class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-												style="width: 100px; background-color: #0c69ef"
-												onclick="idchk()" value="중복확인"></td>
-										</tr>
-										<tr>
-											<td style="height: 30px;"><span id="idchk" name="idchk"></span></td>
-										</tr>
-									</table>
-								</div>
+   <div class="row no-gutter">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+         <div class="login d-flex align-items-center py-5">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-9 col-lg-8 mx-auto">
+                     <h3 class="login-heading mb-4">
+                        <strong>회원가입</strong>
+                     </h3>
+                     <form action="insertmem" method="post">
+                        
+                        <div class="form-label-group">
+                           <span>아이디</span>
+                           <table>
+                              <tr>
+                                 <td style="width: 270px;"><input type="text" id="id"
+                                    class="form-control" name="m_id" required autofocus style="height:50px;"></td>
+                                 <td><input type="button"
+                                    class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                                    style="width: 100px; background-color: #0c69ef"
+                                    onclick="idchk()" value="중복확인"></td>
+                              </tr>
+                              <tr>
+                                 <td style="height: 30px;"><span id="idchk" name="idchk"></span></td>
+                              </tr>
+                           </table>
+                        </div>
 
-								<div class="form-label-group">
+                        <div class="form-label-group">
 
-									<table style="width: 500px;">
-										<tr>
-											<td><span>비밀번호</span></td>
-											<td><span>비밀번호 확인</span></td>
-										</tr>
-										<tr>
-											<td><input type="password" id="pwd" class="form-control"
-												style="width: 240px; height:50px;" name="m_pwd"
-												required></td>
-											<td><input type="password" id="pwd_re"
-												class="form-control"
-												onchange="test()" style="height:50px;" required></td>
-										</tr>
-										<tr>
-											<td style="height: 30px;"><span id="pwdchk"
-												name="pwdchk"></span></td>
-										</tr>
+                           <table style="width: 500px;">
+                              <tr>
+                                 <td><span>비밀번호</span></td>
+                                 <td><span>비밀번호 확인</span></td>
+                              </tr>
+                              <tr>
+                                 <td><input type="password" id="pwd" class="form-control"
+                                    style="width: 240px; height:50px;" name="m_pwd"
+                                    required></td>
+                                 <td><input type="password" id="pwd_re"
+                                    class="form-control"
+                                    onchange="test()" style="height:50px;" required></td>
+                              </tr>
+                              <tr>
+                                 <td style="height: 30px;"><span id="pwdchk"
+                                    name="pwdchk"></span></td>
+                              </tr>
 
-									</table>
-								</div>
+                           </table>
+                        </div>
 
-								<div class="form-label-group">
-									<span>이름</span>
-									<table>
-										<tr>
-											<td><input type="text" id="inputName"
-												class="form-control" name="m_name"
-												autofocus required style="height:50px;"></td>
-										</tr>
-									</table>
-								</div>
+                        <div class="form-label-group">
+                           <span>이름</span>
+                           <table>
+                              <tr>
+                                 <td><input type="text" id="inputName"
+                                    class="form-control" name="m_name"
+                                    autofocus required style="height:50px;"></td>
+                              </tr>
+                           </table>
+                        </div>
 
-								<div class="form-label-group">
-									<span>주민번호</span>
-									<table>
-										<tr>
-											<td><input type="text" id="inputjumin" name="m_jumin"
-												class="form-control" style="height:50px;" required></td>
-										</tr>
-									</table>
-								</div>
+                        <div class="form-label-group">
+                           <span>주민번호</span>
+                           <table >
+                              <tr style="width: 3000px;">
+                                 <td style="width: 240px;">
+                                 <input type="text" id="inputjumin" name="m_jumin1"
+                                    class="form-control" style="width: 240px; height:50px;" required></td>
+                                    <td style="width: 15px;">&nbsp-</td>
+                                    <td style="width: 40px;"><input type="text" id="inputjumin2" name="m_jumin2"
+                                    class="form-control" style="width: 40px;height:50px;" required></td>
+                              </tr>
+                           </table>
+                        </div>
 
-								<div class="form-label-group">
-									<span>휴대전화</span>
-									<table>
-										<tr>
-											<td><input type="text" id="inputPnum" name="m_tel"
-												class="form-control" style="height:50px;" autofocus
-												required></td>
-										</tr>
-									</table>
+                        <div class="form-label-group">
+                           <span>휴대전화</span>
+                           <table>
+                              <tr>
+                                 <td><input type="text" id="inputPnum" name="m_tel"
+                                    class="form-control" style="height:50px;" autofocus
+                                    required></td>
+                              </tr>
+                           </table>
 
-								</div>
-								<button
-									class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-									type="submit" id="submit"
-									style="width: 200px; background-color: #0c69ef" disabled>가입하기</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        </div>
+                        <button
+                           class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                           type="submit" id="submit"
+                           style="width: 200px; background-color: #0c69ef" disabled>가입하기</button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 
 <script>
-	function idchk() {
-		var mid = $('#id').val();
-		console.log('idchk 진입')
-		console.log('mid ::: ' + mid)
-		$.ajaxSetup({
-			cache : false
-		});
-		$.ajax({
-			type : "GET",
-			url : "idchk?mid=" + mid,
-			success : function(res) {
-				console.log("result : " + res);
-				if (res != 0) {
-					$('#submit').prop('disabled', true);
-					$('#idchk').html('이미 존재하는 아이디입니다.');
-				} else {
-					$('#submit').prop('disabled', false);
-					$('#idchk').html('사용 가능한 아이디입니다.');
-				}
+   function idchk() {
+      var mid = $('#id').val();
+      console.log('idchk 진입')
+      console.log('mid ::: ' + mid)
+      $.ajaxSetup({
+         cache : false
+      });
+      $.ajax({
+         type : "GET",
+         url : "idchk?mid=" + mid,
+         success : function(res) {
+            console.log("result : " + res);
+            if (res != 0) {
+               $('#submit').prop('disabled', true);
+               $('#idchk').html('이미 존재하는 아이디입니다.');
+            } else {
+               $('#submit').prop('disabled', false);
+               $('#idchk').html('사용 가능한 아이디입니다.');
+            }
 
-			},
-			error : function(e) {
-				console.log("error : " + e);
-			}
-		});
-	}
+         },
+         error : function(e) {
+            console.log("error : " + e);
+         }
+      });
+   }
 
-	function test() {
-		var pwd = $('#pwd').val();
-		var pwd_re = $('#pwd_re').val();
-		if (pwd != pwd_re) {
-			$('#submit').prop('disabled', true);
-			$('#pwdchk').html('비밀번호가 일치 하지 않습니다');
-		} else {
-			$('#submit').prop('disabled', false);
-			$('#pwdchk').html('비밀번호가 일치합니다');
-		}
+   function test() {
+      var pwd = $('#pwd').val();
+      var pwd_re = $('#pwd_re').val();
+      if (pwd != pwd_re) {
+         $('#submit').prop('disabled', true);
+         $('#pwdchk').html('비밀번호가 일치 하지 않습니다');
+      } else {
+         $('#submit').prop('disabled', false);
+         $('#pwdchk').html('비밀번호가 일치합니다');
+      }
 
-	}
+   }
 </script>

@@ -47,4 +47,19 @@ public class MemberDao implements MemberDaoInter {
 	public MemberVO findID(MemberVO mvo) {
 		return ss.selectOne("member.findid", mvo);
 	}
+
+	@Override
+	public void memberUpdate(MemberVO mvo) {
+		ss.update("member.memUpdate", mvo);
+	}
+
+	@Override
+	public void delMem(String m_id) {
+		ss.delete("member.delMem", m_id);
+	}
+
+	@Override
+	public int userPwdChk(MemberVO mvo) {
+		return ss.selectOne("member.userChk", mvo);
+	}
 }

@@ -95,6 +95,13 @@ public class MemberController {
 		mav.setViewName("mng/selectUserInfoView");
 		return mav;
 	}
+
+	// 비밀번호 찾기 페이지
+	@RequestMapping("/findPWD")
+	public String findpwd() {
+		System.out.println("findPWD");
+		return "member/findpwd";
+	}
 	
 	@RequestMapping("/findID")
 	public String findid() {
@@ -102,10 +109,27 @@ public class MemberController {
 		return "member/findid";
 	}
 
-	@RequestMapping("/findPWD")
-	public String findpwd() {
-		System.out.println("findPWD");
-		return "member/findpwd";
+	// 비밀번호 찾기
+	@PostMapping("/findPWDProcess")
+	public ModelAndView findPWD(MemberVO mvo, String jumin1, String jumin2) {
+		ModelAndView mav = new ModelAndView();
+		StringBuilder sb = new StringBuilder();
+		sb.append(jumin1).append("-");
+		sb.append(jumin2);
+		mvo.setM_jumin(sb.toString());
+
+		MemberVO vo = memberService.findPWD(mvo);
+		mav.addObject("vo", vo);
+		mav.setViewName("member/changepwd");
+		return mav;
+	}
+
+	// 비밀번호 변경
+	@PostMapping("/pwdsuccess")
+	public String changePWD(MemberVO mvo) {
+		memberService.changePWD(mvo);
+		System.out.println("비밀번호 변경 완료");
+		return "member/loginForm";
 	}
 
 }

@@ -26,6 +26,7 @@ public class MemberService {
 		return memberdao.idchk(mvo);
 
 	}
+
 	public void signup(MemberVO mvo) {
 
 		System.out.println(">>> MemberService - signup 진입 >>>");
@@ -40,15 +41,25 @@ public class MemberService {
 	public MemberVO detailMem(String userID) {
 		return memberDaoInter.detailMem(userID);
 	}
-	
+
 	public MemberVO findID(MemberVO mvo) {
 		MemberVO vo = memberDaoInter.findID(mvo);
-		if(vo == null) {
+		if (vo == null) {
 			MemberVO nvo = new MemberVO();
 			nvo.setM_id("null");
 			return nvo;
-		} 
-	    return vo;
+		}
+		return vo;
+	}
+
+	// 비밀번호 찾기 트렌젝션
+	public MemberVO findPWD(MemberVO mvo) {
+		return memberDaoInter.findPWD(mvo);
+	}
+
+	// 비밀번호 변경 트렌젝션
+	public void changePWD(MemberVO mvo) {
+		memberDaoInter.changePWD(mvo);
 	}
 
 }

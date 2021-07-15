@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<div class="container">
+<div class="container" style="margin-top: 150px;">
 	<p></p>
 	<p></p>
 	<h1>아이디 찾기</h1>
@@ -16,7 +16,7 @@
 	<br>
 	<br>
 
-	<div class="clearfix">
+	<div class="clearfix" style="margin-bottom: 30px;">
 		<button type="button" class="cancelbtn"
 			style="width: 150px; background: gray;">돌아가기</button>
 		<button type="submit" style="width: 150px; background: #6466ea;" onclick="findid()">아이디

@@ -28,4 +28,9 @@
 		from member where M_ID = #{userID}
 	</select>
 	
+	<select id="findid" parameterType="mvo" resultType="mvo">
+      select m_ID, m_NAME from member 
+	  where m_NAME=#{m_name} and m_tel=#{m_tel}
+	</select>
+	
 </mapper>

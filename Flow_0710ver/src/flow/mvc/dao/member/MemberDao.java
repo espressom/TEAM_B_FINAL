@@ -34,5 +34,10 @@ public class MemberDao implements MemberDaoInter {
 		return ss.selectOne("member.detail", userID);
 	}
 	
+	@Override
+	public MemberVO findID(MemberVO mvo) {
+		return ss.selectOne("member.findid", mvo);
+	}
+	
 	
 }

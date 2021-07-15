@@ -95,5 +95,17 @@ public class MemberController {
 		mav.setViewName("mng/selectUserInfoView");
 		return mav;
 	}
+	
+	@RequestMapping("/findID")
+	public String findid() {
+		System.out.println("findID");
+		return "member/findid";
+	}
+
+	@RequestMapping("/findPWD")
+	public String findpwd() {
+		System.out.println("findPWD");
+		return "member/findpwd";
+	}
 
 }

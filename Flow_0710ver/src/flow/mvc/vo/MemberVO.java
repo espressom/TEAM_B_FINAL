@@ -13,6 +13,18 @@ public class MemberVO {
 	private String m_jumin;
 	private int m_tel;
 	private String m_adate;
+	@Override
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
+		String result=null;
+		try {
+			result = mapper.writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	@Override
 	public String toString() {

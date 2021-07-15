@@ -14,13 +14,14 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-		
-<context:component-scan base-package="flow.mvc"/>
-<aop:aspectj-autoproxy/>
-<mvc:annotation-driven/>
-<mvc:resources location="/resources/" mapping="/resources/**"/>
 
-<!-- tiles설정 -->
+	<context:component-scan base-package="flow.mvc" />
+	<aop:aspectj-autoproxy />
+	<mvc:annotation-driven />
+	<mvc:resources location="/resources/"
+		mapping="/resources/**" />
+
+	<!-- tiles설정 -->
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
@@ -35,20 +36,20 @@
 			</list>
 		</property>
 	</bean>
-	<!-- tiles설정  끝-->
+	<!-- tiles설정 끝 -->
 
-<!-- String, mav, 리다이렉트 제외 전부 이걸 통해서 매핑 -->
-<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	<property name="prefix" value="/WEB-INF/views/"/>
-	<property name="suffix" value=".jsp"/>
-</bean>		
+	<!-- String, mav, 리다이렉트 제외 전부 이걸 통해서 매핑 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
 
-<!-- Interceptors -->
-
-<mvc:interceptors>
-         <mvc:interceptor>
-                  <mvc:mapping path="/selectUserInfoView" /> 
-                  <bean class="flow.mvc.interceptor.Interceptor" />
-         </mvc:interceptor>
-</mvc:interceptors>
+	<!-- Interceptors -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/selectUserInfoView" />
+			<bean class="flow.mvc.interceptor.Interceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

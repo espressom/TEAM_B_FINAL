@@ -27,7 +27,7 @@ public class Advice {
 		if (param.length != 0) {
 			int length = param.length;
 			for (int i = 0; i < length; i++) {
-				LOG.info((i+1)+"번째 param: "+param[i]);
+				LOG.info("| "+(i+1)+"번째 param: "+param[i]);
 			}
 		}
 	}
@@ -37,14 +37,14 @@ public class Advice {
 		// MethodInvocation을 통해 메서드 정보, 타겟 오브젝트에 대한 정보 알 수있다
 		String methodName = pjp.getSignature().getName();
 		LOG.info("======================================");
-		LOG.info("[LOG]  METHOD  :: " + methodName + " is calling.");
+		LOG.info("| [LOG]  METHOD  :: " + methodName + " 호출");
 		printParam(pjp);
 		Object rev = pjp.proceed();
 		if (rev != null) {
-			LOG.info("returnv :: " + rev);
+			LOG.info("| returnv :: " + rev);
 		}
 		printParam(pjp);
-		LOG.info("[LOG]  METHOD  :: " + methodName + " was called.");
+		LOG.info("| [LOG]  METHOD  :: " + methodName + " 종료");
 		LOG.info("======================================");
 		return rev;
 	}

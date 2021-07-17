@@ -180,16 +180,12 @@
 						<input type="password"
 							name="m_pwd" id="m_pwd" maxlength="20" title="Password"
 							placeholder="Password" onkeypress="press(event);">
-						<div class="btnWrap">
+						<div class="btnWrap"  style="font-size: 12px;">
 							<button class="loginBtn" type="button" style="height: 30px; margin-right:10px;" onclick="actionLogin();">로그인</button>
+						<a href="findID" style="color:black;">아이디 찾기</a> / <a href="findPWD" style="color:black">비밀번호 찾기</a> 
 						</div>
 					</form>
 				</div>
-			<div class="findWrap">
-				<div class="btnWrap" style="font-size: 12px;">
-					<a href="findID" style="color:black;">아이디</a> / <a href="findPWD" style="color:black">비밀번호</a> 찾기
-				</div>
-			</div>
 			</div>
 		</div>
 

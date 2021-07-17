@@ -6,16 +6,18 @@
     <div id="header">
         <div class="headerWrap">
          <div class="headerTop">
-            <h1><a href="/"><img src="resources/images/logo.svg" style="width: 120px; padding-top: 5px" alt="오픈다트 로고"/></a></h1>
+            <h1><a href="index"><img src="resources/images/logo.svg" style="width: 120px; padding-top: 5px" alt="오픈다트 로고"/></a></h1>
             <div class="util_menu">
             <form name="selectOne" method="post">
                <ul>
                <c:choose>
                  <c:when test="${sessionScope.sessionID == null}">
+                  <li><a href='signup'>JOIN</a></li>
                   <li><a href='loginForm'>LOGIN</a></li>
                </c:when>
                <c:when test="${sessionScope.sessionID != null}">
                   <li>${sessionScope.sessionName}님 반갑습니다</li>
+                  <li><a href='selectUserInfoView'>MY PAGE</a></li>
                   <li><a href='logout'>LOGOUT</a></li>
                </c:when>
                </c:choose>   
@@ -26,7 +28,7 @@
          </div>
             <ul class="gnb">
                 <li>
-                    <a href="/intro/main.do">오픈API 소개</a>
+                    <a href="/intro/main.do">Flow 소개</a>
                     <ul class="first">
                         <li><a href="/intro/main.do">오픈API 소개</a></li>
                         <li><a href="/intro/infoApiList.do">오픈API 서비스 소개</a></li>
@@ -35,7 +37,7 @@
                     </ul>
                 </li>
                 <li>
-                     <a href="/mng/userApiKeyListView.do">인증키 신청/관리</a>
+                     <a href="/mng/userApiKeyListView.do">개인 재무/자산</a>
                     <ul>
                   <li><a href="/uss/umt/EgovMberInsertView.do">인증키 신청</a></li>
                   <li><a href="/mng/userApiKeyListView.do">인증키 관리</a></li>
@@ -43,18 +45,18 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/guide/main.do?apiGrpCd=DS001">개발가이드</a>
+                    <a href="/guide/main.do?apiGrpCd=DS001">주식 및 기업정보</a>
                     <ul>
-                        <li><a href="/guide/main.do?apiGrpCd=DS001">공시정보</a></li>
-                  <li><a href="/guide/main.do?apiGrpCd=DS002">사업보고서 주요정보</a></li>
-                  <li><a href="/guide/main.do?apiGrpCd=DS003">상장기업 재무정보</a></li>
-                  <li><a href="/guide/main.do?apiGrpCd=DS004">지분공시 종합정보</a></li>
+                        <li><a href="/guide/main.do?apiGrpCd=DS001">상장 기업 정보</a></li>
+                  <li><a href="/guide/main.do?apiGrpCd=DS002">마이 포트폴리오</a></li>
+                  <li><a href="/guide/main.do?apiGrpCd=DS003">종목 분석</a></li>
+                  <li><a href="/guide/main.do?apiGrpCd=DS004">실시간 뉴스</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/disclosureinfo/biz/main.do">공시정보 활용마당</a>
+                    <a href="/disclosureinfo/biz/main.do">My Flow</a>
                     <ul>
-                        <li><a href="/disclosureinfo/biz/main.do">사업보고서 주요정보조회</a></li>
+                        <li><a href="/disclosureinfo/biz/main.do">분석자료위주메뉴</a></li>
                   <li><a href="/disclosureinfo/fnltt/singl/main.do">재무정보조회</a></li>
                   <li><a href="/disclosureinfo/fnltt/dwld/main.do">재무정보일괄다운로드</a></li>
                   <li><a href="/disclosureinfo/qota/main.do">지분공시 종합정보조회</a></li>
@@ -68,15 +70,7 @@
                   <li><a href="/cop/bbs/selectArticleList.do?bbsId=B0000000000000000003">Q&A</a></li>
                   <li><a href="/cop/bbs/selectArticleList.do?bbsId=B0000000000000000004">변동내역알림</a></li>
                     </ul>
-                </li>
-             <li>
-                    <a href="selectUserInfoView">마이페이지</a>
-                    <ul>
-                        <li><a href="/mng/selectUserInfoView.do">사용자 정보조회</a></li>
-                        <li><a href="/mng/changeUserPwView.do">비밀번호 변경</a></li>
-                        <li><a href="/mng/signOutUserView.do">탈퇴하기</a></li>
-                    </ul>
-                </li>
+                </li> 
             </ul>
         </div>
         <div class="bg01"></div>

@@ -116,7 +116,7 @@
   }
 }
 </style>
-<div class="container-fluid" style="margin-top: 100px;">
+<div class="container-fluid" style="margin-top: 150px;">
    <div class="row no-gutter">
       <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
       <div class="col-md-8 col-lg-6">
@@ -185,10 +185,10 @@
                            <table >
                               <tr style="width: 3000px;">
                                  <td style="width: 240px;">
-                                 <input type="text" id="inputjumin" name="m_jumin1"
+                                 <input type="text" id="inputjumin" name="m_jumin1" maxlength="6"
                                     class="form-control" style="width: 240px; height:50px;" required></td>
                                     <td style="width: 15px;">&nbsp-</td>
-                                    <td style="width: 40px;"><input type="text" id="inputjumin2" name="m_jumin2"
+                                    <td style="width: 40px;"><input type="text" id="inputjumin2" name="m_jumin2" maxlength="1"
                                     class="form-control" style="width: 40px;height:50px;" required></td>
                               </tr>
                            </table>

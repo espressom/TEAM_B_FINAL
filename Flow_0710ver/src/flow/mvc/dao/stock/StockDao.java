@@ -34,6 +34,8 @@ public class StockDao implements StockDaoInter {
 	public int getLike(StockLikeVO slvo) {
 		System.out.println("StockDao : getLike");
 		int cnt = ss.selectOne("stock.get_like", slvo);
+		System.out.println(slvo.getSlike_code() + " / " + slvo.getSlike_id());
+		System.out.println(cnt);
 		return cnt;
 	}
 
@@ -41,14 +43,12 @@ public class StockDao implements StockDaoInter {
 	public void addLike(StockLikeVO slvo) {
 		System.out.println("StockDao : addLike");
 		ss.insert("stock.add_like", slvo);
-		
 	}
 
 	@Override
 	public void delLike(StockLikeVO slvo) {
 		System.out.println("StockDao : delLike");
 		ss.insert("stock.del_like", slvo);
-		
 	}
 
 	@Override
@@ -56,5 +56,14 @@ public class StockDao implements StockDaoInter {
 		System.out.println("StockDao : listLike");
 		return ss.selectList("stock.list_like", slike_id);
 	}
+
+	@Override
+	public int countLike(String c_code) {
+		System.out.println("StockDao : count_like");
+		return ss.selectOne("stock.count_like", c_code);
+		
+	}
  
+	
+	
 }

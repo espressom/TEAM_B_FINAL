@@ -4,9 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="stock">
  
- 
- 
-<!--  quizVO : usersVO association -->
 <resultMap type="slvo" id="LikeResult">
 <result property="slike_id" column="slike_id"/>
 <result property="slike_code" column="slike_code"/>
@@ -23,8 +20,6 @@
 </resultMap>
  
  
- 
- 
  <select id="company_all" resultType="cvo">
 select c_code, c_name, c_type, c_product, to_char(c_ipo, 'yyyy-mm-dd') c_ipo, c_closingmonth,
 c_ceo, c_homepage, c_location from company
@@ -36,8 +31,8 @@ c_closingmonth, c_ceo, c_homepage, c_location from company
 where c_code=#{c_code}
 </select>
 
-<select id="get_like" parameterType="slvo" resultMap="LikeResult">
-select count(*) cnt from stock_like where slike_id=#{slike_id} and slike_code=#{slike_id}
+<select id="get_like" parameterType="slvo" resultType="int">
+select count(*) cnt from stock_like where slike_id=#{slike_id} and slike_code=#{slike_code}
 </select>
 
 <insert id="add_like" parameterType="slvo">
@@ -47,6 +42,10 @@ insert into stock_like (slike_id, slike_code) values (#{slike_id}, #{slike_code}
 <delete id="del_like" parameterType="slvo">
 delete stock_like where slike_id=#{slike_id} and slike_code=#{slike_code}
 </delete>
+
+<select id="count_like" parameterType="String" resultType="slvo">
+select count(*) cnt from stock_like where slike_code=#{slike_code}
+</select>
 
 <select id="list_like" parameterType="String" resultType="slvo">
 select slike_id, slike_code from stock_like where slike_id=#{slike_id}

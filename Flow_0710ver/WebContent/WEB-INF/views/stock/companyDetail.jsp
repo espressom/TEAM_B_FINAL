@@ -112,13 +112,13 @@
 		</div>
 	</div>
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 	function likeUpdate() {
 		$.ajaxSetup({cache: false});
 		$.ajax({
 			type: "GET",
-			url:"welLikeStatus?svcld=${service.svcld}&memberid=${sessionScope.sessionID}",
+			url:"likeStatus?slike_code=${cvo.c_code}&slike_id=${sessionScope.sessionID}",
 			success:function(res) {
 				console.log("Data status : " + res);
 				if (res != 1) {

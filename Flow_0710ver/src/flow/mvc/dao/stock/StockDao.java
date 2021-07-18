@@ -52,7 +52,7 @@ public class StockDao implements StockDaoInter {
 	}
 
 	@Override
-	public List<StockLikeVO> listLike(String slike_id) {
+	public List<CompanyVO> listLike(String slike_id) {
 		System.out.println("StockDao : listLike");
 		return ss.selectList("stock.list_like", slike_id);
 	}

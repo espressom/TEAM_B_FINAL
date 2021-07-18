@@ -35,15 +35,13 @@
 						</thead>
 						
 						<tbody> 
-						<c:forEach var="c" items="${slist}">
+						<c:forEach var="c" items="${slist}" >
 							<tr>
 								 <td>${c.c_code}</td>
 								 <td><a href="companyDetail?c_code=${c.c_code}&slike_id=${sessionScope.sessionID}">${c.c_name}</a></td>
-								 <td>추가 예정</td>
-							 
-							</c:forEach>
- 
-
+								  <td>${c.c_price}</td>
+								 </c:forEach>
+					 
 						</tbody>
 					</table>
 				</div>

@@ -13,7 +13,7 @@
 </association>
 </resultMap>
  
- 
+
 
  <select id="company_all" resultType="cvo">
 select c_code, c_name, c_type, c_product, to_char(c_ipo, 'yyyy-mm-dd') c_ipo, c_closingmonth,

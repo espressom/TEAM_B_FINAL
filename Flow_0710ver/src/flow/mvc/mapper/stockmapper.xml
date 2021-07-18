@@ -3,23 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="stock">
- 
-<resultMap type="slvo" id="LikeResult">
-<result property="slike_id" column="slike_id"/>
-<result property="slike_code" column="slike_code"/>
 
-
-<association property="members" javaType="mvo" column="slike_id" >
-<result property="m_id" column="m_id"></result>
-</association>
-
-<association property="company" javaType="cvo" column="slike_code">
+<resultMap type="cvo" id="MyLike">
+<result property="c_name" column="c_name"/>
 <result property="c_code" column="c_code"/>
-</association>
 
+<association property="stocklike" javaType="slvo" column="c_code" >
+<result property="slike_code" column="slike_code"></result>
+</association>
 </resultMap>
  
  
+
  <select id="company_all" resultType="cvo">
 select c_code, c_name, c_type, c_product, to_char(c_ipo, 'yyyy-mm-dd') c_ipo, c_closingmonth,
 c_ceo, c_homepage, c_location from company
@@ -47,8 +42,9 @@ delete stock_like where slike_id=#{slike_id} and slike_code=#{slike_code}
 select count(*) cnt from stock_like where slike_code=#{slike_code}
 </select>
 
-<select id="list_like" parameterType="String" resultType="slvo">
-select slike_id, slike_code from stock_like where slike_id=#{slike_id}
+<select id="list_like" parameterType="String" resultMap="MyLike">
+select c.c_code, c.c_name from stock_like s, company c 
+where slike_id=#{slike_id} and s.slike_code=c.c_code
 </select>
 
 </mapper>

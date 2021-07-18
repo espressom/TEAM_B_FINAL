@@ -5,6 +5,18 @@ public class CompanyVO {
 	private String c_code, c_name, c_type, c_product, c_ipo, 
 	c_closingmonth, c_ceo, c_homepage, c_location;
 
+	// 마이페이지 - 내 관심좀옥 ResultMap을 위한 객체
+	private StockLikeVO stocklike;
+	
+ 
+	public StockLikeVO getStocklike() {
+		return stocklike;
+	}
+
+	public void setStocklike(StockLikeVO stocklike) {
+		this.stocklike = stocklike;
+	}
+
 	public String getC_code() {
 		return c_code;
 	}

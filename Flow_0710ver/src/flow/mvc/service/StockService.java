@@ -1,7 +1,11 @@
 package flow.mvc.service;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +33,43 @@ public class StockService {
 	public CompanyVO companyDetail(String c_code) {
 		return stockDaoInter.companyDetail(c_code);
 	}
+	
+	// 사업장 주소 받아오기 (작업중)
+	public void companyMap(String c_code) {
+		System.out.println("Service - companyMap : " + c_code);
+		String key = "5e52b565665c28032cdf2b64260b2a80313b2a64";
+		String url = "https://opendart.fss.or.kr/api/company.json?crtfc_key="+key+"&corp_code=00126380";
+		
+	}
+	
+	// 종목별 실시간 가격 받아오기
+	public String stockPrice(String c_code) {
+		System.out.println("Service - stockPrice : ");
+		String url = "https://finance.naver.com/item/main.nhn?code="+c_code;
+		String selector = "#chart_area > div.rate_info > div > p.no_today > em > .blind";
+		
+	      Document doc = null;
 
+	      try {
+	         doc = Jsoup.connect(url).get(); // 1. get방식의 URL에 연결해서 가져온 값을 doc에 담는다.
+	      } catch (IOException e) {
+	         System.out.println(e.getMessage());
+	      }
+
+	      Elements ele = doc.select(selector); // 2. doc에서 selector의 내용을 가져와 Elementes 클래스에 담는다.
+	      String price = ele.text();
+	      System.out.println(price);
+	      return price;
+	
+	}
+	
+	
+
+	// 내 관심종목 (좋아요)
+	public List<StockLikeVO> listLike(String slike_id) {
+		return stockDaoInter.listLike(slike_id); 
+	}
+	
 	
 	// 좋아요 받아오기
 	public int LikeStatus(String slike_code, String slike_id) {
@@ -51,15 +91,9 @@ public class StockService {
 		
 		if (res != 0) {
 			stockDaoInter.delLike(slvo);
-			//lvo.setHit(UNLIKE); // 좋아요 상태일때 다시 원상태로
-//			welfareDaoInter.welLikeUpdate(lvo);
-//			welfareDaoInter.welLikeDelete(lvo);
 			res = UNLIKE;
 		} else {
 			stockDaoInter.addLike(slvo);
-//			lvo.setHit(LIKE); // 기본 상태일때 좋아요로.
-//			welfareDaoInter.welLikeUpdate(lvo);
-//			welfareDaoInter.welLikeInsert(lvo);
 			res = LIKE;
 		}
 

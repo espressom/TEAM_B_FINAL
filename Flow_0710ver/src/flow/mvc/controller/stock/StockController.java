@@ -1,6 +1,5 @@
 package flow.mvc.controller.stock;
 
-
 import java.util.List;
  
 
@@ -12,10 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import flow.mvc.service.StockService;
 import flow.mvc.vo.CompanyVO;
-
-
-
- 
+import flow.mvc.vo.StockLikeVO;
 
 @Controller
 public class StockController {
@@ -41,12 +37,13 @@ public class StockController {
 		System.out.println("StockController - companyDetail");
 		ModelAndView mav = new ModelAndView();
 		CompanyVO cvo = stockService.companyDetail(c_code);
+		String price = stockService.stockPrice(c_code);
 		
 		// 좋아요 여부 받아오기-----
-		//String slike_code = c_code;
 		int status = stockService.LikeStatus(c_code, slike_id);
-		 
+		
 		mav.addObject("cvo", cvo);
+		mav.addObject("price", price);
 		mav.addObject("likeStatus", status);
 	 
 		mav.setViewName("stock/companyDetail");
@@ -59,5 +56,20 @@ public class StockController {
 		
 		return res;
 	}
+	
+	@GetMapping(value="/myPortfolio")
+	public ModelAndView myPortfolio(String slike_id) {
+		System.out.println("StockController - myPortfolio");
+		ModelAndView mav = new ModelAndView();
+		
+		List<StockLikeVO> slist = stockService.listLike(slike_id);
+		
+		
+		mav.addObject("slist", slist);
+
+		mav.setViewName("stock/myPortfolio");
+		return mav;
+	}
+	
 
 }

@@ -1,5 +1,7 @@
 package flow.mvc.controller.stock;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
  
 
@@ -61,11 +63,13 @@ public class StockController {
 	public ModelAndView myPortfolio(String slike_id) {
 		System.out.println("StockController - myPortfolio");
 		ModelAndView mav = new ModelAndView();
-		
-		List<StockLikeVO> slist = stockService.listLike(slike_id);
-		
-		
+
+		// 종목코드 + 종목이름
+		List<CompanyVO> slist = stockService.listLike(slike_id);
+	
+	
 		mav.addObject("slist", slist);
+
 
 		mav.setViewName("stock/myPortfolio");
 		return mav;

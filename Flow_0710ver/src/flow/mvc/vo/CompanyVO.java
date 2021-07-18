@@ -1,14 +1,36 @@
 package flow.mvc.vo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class CompanyVO {
 
 	private String c_code, c_name, c_type, c_product, c_ipo, 
-	c_closingmonth, c_ceo, c_homepage, c_location;
+	c_closingmonth, c_ceo, c_homepage, c_location, c_price;
 
 	// 마이페이지 - 내 관심좀옥 ResultMap을 위한 객체
 	private StockLikeVO stocklike;
-	
+	@Override
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
+		String result=null;
+		try {
+			result = mapper.writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
  
+	public String getC_price() {
+		return c_price;
+	}
+
+	public void setC_price(String c_price) {
+		this.c_price = c_price;
+	}
+
 	public StockLikeVO getStocklike() {
 		return stocklike;
 	}

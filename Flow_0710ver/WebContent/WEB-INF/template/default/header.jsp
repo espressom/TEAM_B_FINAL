@@ -51,6 +51,7 @@
                  
                   <li><a href="/guide/main.do?apiGrpCd=DS003">종목 분석</a></li>
                   <li><a href="/guide/main.do?apiGrpCd=DS004">실시간 뉴스</a></li>
+                  <li><a href="economicIndication">경제 지표</a></li>
                     </ul>
                 </li>
                 <li>

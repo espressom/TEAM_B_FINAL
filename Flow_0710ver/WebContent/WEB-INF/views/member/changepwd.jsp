@@ -34,36 +34,50 @@ function check_pw(){
             }
         }
 </script>
-<section class="container1">
-	<article class="half">
-		<h1>
-			<a class="navbar-brand h1" href="index"> <span
-				class="text-dark h4"
-				style="font-family: 'Sunflower'; font-weight: 500">비밀번호</span>
-			</a>
-		</h1>
-		<label>비밀번호를 변경해주세요.</label>
-		<div class="content">
-			<div class="signin-cont cont">
+
+
+<div class="container" style="margin-top: 150px;">
+
+		<!-- 비밀번호 변경 (상단) -->
+		<div class="findBox">
+			<div class="findTop">
+				<div class="findImg">
+					<div class="imgWrap"></div>
+				</div>
+
+				<div class="titWrap">
+					<h4>
+						<span class="em">비밀번호 </span>변경하기
+					</h4>
+					<span class="exp">
+						<p>새로운 비밀번호을 입력 해 주세요</p>
+					</span>
+				</div>
+			</div>
+
+			<div class="find">
+				<div class="titWrap">
+					<h5>새 비밀번호</h5>
+
+				</div>
+				<div class="inputWrap">
 				<form action="pwdsuccess" method="post" nctype="multipart/form-data">
 					<input type="hidden" id="m_name" name="m_name" value="${vo.m_name }">
 					<input type="hidden" id="m_id" name="m_id" value="${vo.m_id }">
-					
-					<label for="pwd"><b>* 패스워드</b></label><br> <input
-						type="password" placeholder="Enter Password" name="m_pwd" id="m_pwd"
-						required style="width: 300px;" onchange="check_pw()"><br>
+				
+					 <input type="password"
+						placeholder="새 비밀번호 입력" id="m_pwd" name=m_pwd onchange="check_pw()">
+				</div>
 
-					<label for="pwd-repeat"><b>* 패스워드 확인</b></label><br> <input
-						type="password" placeholder="Repeat Password" name="pwd-repeat"
-						id="pwd-repeat" required style="width: 300px;"
-						onchange="check_pw()">&nbsp;<span id="check"></span><br>
-
-
-					<input type="submit" value="비밀번호 변경" class="submit">
-			</form>
+				<div class="inputWrap">
+					 <input type="password"
+						placeholder="한 번 더 입력" id="pwd-repeat" name="pwd-repeat" onchange="check_pw()">
+				</div>
+				<div class="btnWrap">
+				<button class="findBtn" type="submit" value="비밀번호 변경" class="submit" class="findBtn" > 변경하기 </button>
+			 
+					 		 </form>
+				</div>
 			</div>
 		</div>
-
-	</article>
-	<div class="half bg"></div>
-</section>
+		<!-- 비밀번호 변경 (하단) -->

@@ -3,14 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 .boxwrap {
-    display:table;
-    width:100%;
-    table-layout: fixed;
+	display: table;
+	width: 100%;
+	table-layout: fixed;
 }
- 
+
 .boxwrap .box {
-    display:table-cell;
-    vertical-align: middle;
+	display: table-cell;
+	vertical-align: middle;
 }
 </style>
 <!-- //메인 보드 -->
@@ -20,28 +20,21 @@
 
 			<!-- 메인컨텐츠 영역 시작 -->
 			<div class="head_tit">
-				<h3>
-				</h3>
+				<h3></h3>
 			</div>
 
-			<!-- 리스트 -->
-			<div class="mainBoardWarp">
-				<div class="mainBoard" style="width:40rem">
-					<h4>
-						실시간 뉴스</h4>
-					<ul>
-					<c:forEach var="e" items="${list}">
-					<li>
-					<a href=${e.href }>${e.title }</a>
-					</li>
-					
-					</c:forEach>
-					
-					</ul>
+			<!-- 소개 -->
+			<div class="introWarp">
+				<div class="intro">
+					<div><img alt="" src=""></div>
+					<h5>DART 공시원문 활용</h5>
+					<div class="cont">
+						DART에 공시되는 공시보고서의 <br />원문을 XML형식으로 다운로드받아<br />원하는 자료를 자유롭게
+						추출하여 <br />사용할 수 있습니다.
+					</div>
 				</div>
 			</div>
-
-			<!-- //리스트 -->
+			<!-- //소개 -->
 
 
 

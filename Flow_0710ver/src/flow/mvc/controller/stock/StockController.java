@@ -14,9 +14,6 @@ import flow.mvc.service.StockService;
 import flow.mvc.vo.CompanyVO;
 
 
-
- 
-
 @Controller
 public class StockController {
 
@@ -35,7 +32,7 @@ public class StockController {
 		return mav;
 	}
 	
-	@GetMapping(value = {"/companyDetail"})
+	@GetMapping(value = {"/companyDetail2"})
 	public ModelAndView companyDetail(String c_code, String slike_id) {
 		// 회사 상세정보 받아오기-----
 		System.out.println("StockController - companyDetail");

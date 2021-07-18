@@ -12,11 +12,16 @@
                <ul>
                <c:choose>
                  <c:when test="${sessionScope.sessionID == null}">
+                  <li><a href='signup'>JOIN</a></li>
                   <li><a href='loginForm'>LOGIN</a></li>
                </c:when>
                <c:when test="${sessionScope.sessionID != null}">
                   <li>${sessionScope.sessionName}님 반갑습니다</li>
+<<<<<<< HEAD
                   <li><a href="userCheckForm">마이페이지</a></li>
+=======
+                  <li><a href='selectUserInfoView'>MY PAGE</a></li>
+>>>>>>> 94db9bba9974319e7b286cb4601b7a771a707b0f
                   <li><a href='logout'>LOGOUT</a></li>
                </c:when>
                </c:choose>   
@@ -27,7 +32,11 @@
          </div>
             <ul class="gnb">
                 <li>
+<<<<<<< HEAD
                     <a href="/intro/main.do">Flow 소개</a>
+=======
+                    <a href="#">Flow 소개</a>
+>>>>>>> 94db9bba9974319e7b286cb4601b7a771a707b0f
                     <ul class="first">
                         <li><a href="/intro/main.do">Flow 소개</a></li>
                         <li><a href="/intro/infoApiList.do">오픈API 서비스 소개</a></li>
@@ -36,7 +45,11 @@
                     </ul>
                 </li>
                 <li>
+<<<<<<< HEAD
                      <a href="/mng/userApiKeyListView.do">개인 재무/자산</a>
+=======
+                     <a href="#">개인 재무/자산</a>
+>>>>>>> 94db9bba9974319e7b286cb4601b7a771a707b0f
                     <ul>
                   <li><a href="/uss/umt/EgovMberInsertView.do">가계부</a></li>
                   <li><a href="/mng/userApiKeyListView.do">인증키 관리</a></li>
@@ -44,18 +57,32 @@
                     </ul>
                 </li>
                 <li>
+<<<<<<< HEAD
                     <a href="/guide/main.do?apiGrpCd=DS001">주식</a>
                     <ul>
                         <li><a href="/guide/main.do?apiGrpCd=DS001">상장기업정보</a></li>
                   <li><a href="/guide/main.do?apiGrpCd=DS002">내 포트폴리오</a></li>
+=======
+                    <a href="#">주식 및 기업정보</a>
+                    <ul>
+                        <li><a href="companyList">상장 기업 정보</a></li>
+                 
+>>>>>>> 94db9bba9974319e7b286cb4601b7a771a707b0f
                   <li><a href="/guide/main.do?apiGrpCd=DS003">종목 분석</a></li>
                   <li><a href="/guide/main.do?apiGrpCd=DS004">실시간 뉴스</a></li>
                     </ul>
                 </li>
                 <li>
+<<<<<<< HEAD
                     <a href="/disclosureinfo/biz/main.do">My Flow</a>
                     <ul>
                         <li><a href="/disclosureinfo/biz/main.do">내 재무 통계</a></li>
+=======
+                    <a href="#">My Flow (회원전용)</a>
+                    <ul>
+                   <li><a href="myPortfolio?slike_id=${sessionScope.sessionID}">마이 포트폴리오</a></li>
+                  <li><a href="/disclosureinfo/biz/main.do">분석자료위주메뉴</a></li>
+>>>>>>> 94db9bba9974319e7b286cb4601b7a771a707b0f
                   <li><a href="/disclosureinfo/fnltt/singl/main.do">재무정보조회</a></li>
                   <li><a href="/disclosureinfo/fnltt/dwld/main.do">재무정보일괄다운로드</a></li>
                   <li><a href="/disclosureinfo/qota/main.do">지분공시 종합정보조회</a></li>
@@ -69,6 +96,7 @@
                   <li><a href="/cop/bbs/selectArticleList.do?bbsId=B0000000000000000003">Q&A</a></li>
                   <li><a href="/cop/bbs/selectArticleList.do?bbsId=B0000000000000000004">변동내역알림</a></li>
                     </ul>
+<<<<<<< HEAD
                 </li>
              	<li>
                     
@@ -78,6 +106,9 @@
                         <li><a href="/mng/signOutUserView.do">탈퇴하기</a></li>
                     </ul>
                 </li>
+=======
+                </li> 
+>>>>>>> 94db9bba9974319e7b286cb4601b7a771a707b0f
             </ul>
         </div>
         <div class="bg01"></div>

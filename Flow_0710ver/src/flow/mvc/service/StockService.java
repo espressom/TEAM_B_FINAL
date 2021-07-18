@@ -68,8 +68,7 @@ public class StockService {
 	// 내 관심종목 (좋아요)
 	public List<CompanyVO> listLike(String slike_id) {
 		List<CompanyVO> slist = stockDaoInter.listLike(slike_id);
-//		slist = listLikePrice(slist); 
-//		return  slist;
+ 
 		
 		String selector = "#chart_area > div.rate_info > div > p.no_today > em > .blind";
 		Document doc = null;
@@ -91,30 +90,7 @@ public class StockService {
 	
 	return slist;
 	}
-	
-	// 관심종목 가격 리스트 
-//	private List<CompanyVO> listLikePrice(List<CompanyVO> slist) {
-//		
-//		String selector = "#chart_area > div.rate_info > div > p.no_today > em > .blind";
-//		Document doc = null;
-//	 
-//		for (CompanyVO c : slist) {
-//			String url = "https://finance.naver.com/item/main.nhn?code="+c.getC_code();
-//			
-//			 try {
-//		         doc = Jsoup.connect(url).get(); // 1. get방식의 URL에 연결해서 가져온 값을 doc에 담는다.
-//		      } catch (IOException e) {
-//		         System.out.println(e.getMessage());
-//		      }
-//		
-//		Elements ele = doc.select(selector); // 2. doc에서 selector의 내용을 가져와 Elementes 클래스에 담는다.
-//		String price = ele.text();
-//		c.setC_price(price);
-// 
-//		}
-//	
-//	return slist;
-//	}
+	 
 	
 	
 	// 좋아요 받아오기

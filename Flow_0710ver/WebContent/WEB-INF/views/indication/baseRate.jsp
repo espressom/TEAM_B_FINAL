@@ -12,7 +12,7 @@
 <title>경제 지표 </title>
 <link href="css/egovframework/com/com.css" rel="stylesheet" type="text/css" />
 
-<script src='https://cdn.plot.ly/plotly-2.2.0.min.js'></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
@@ -20,22 +20,27 @@
 		<div>
 			<div>
 			<h1>기준금리 확인!</h1>
-				<div id="myDiv"></div>
+				<div id=graph></div>
 			</div>
 		</div>
 	</div>
 </body>
 <script>
-	var trace1 = {
-	  x: [1, 2, 3, 4],
-	  y: [10, 15, 13, 17],
-	  type: 'line'
-	};
-	
+$(function(){
+
+        $.ajax({
+            url:'http://192.168.0.25:8099/shop/baseRate?callback',
+            type:'GET',
+            dataType:'jsonp',
+            success:function(data){
+                console.log(data);
+                Plotly.plot('graph', data, {});
+            }
+        });
+});
+
+
 
 	
-	var data = [trace1];
-	
-	Plotly.newPlot('myDiv', data);
 </script>
 </html>

@@ -8,6 +8,7 @@ public class IndicationController {
 
 	@RequestMapping("/economicIndication")
 	public String economicIndication() {
+		
 		return "indication/baseRate";
 	}
 }

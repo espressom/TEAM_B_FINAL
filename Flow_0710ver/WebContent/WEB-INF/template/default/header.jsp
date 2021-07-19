@@ -6,7 +6,7 @@
     <div id="header">
         <div class="headerWrap">
          <div class="headerTop">
-            <h1><a href="index"><img src="resources/images/logo.svg" style="width: 120px; padding-top: 5px" alt="오픈다트 로고"/></a></h1>
+            <h1><a href="index"><img src="resources/images/logo.svg" style="width: 120px; padding-top: 5px"/></a></h1>
             <div class="util_menu">
             <form name="selectOne" method="post">
                <ul>
@@ -51,6 +51,7 @@
                  
                   <li><a href="/guide/main.do?apiGrpCd=DS003">종목 분석</a></li>
                   <li><a href="/guide/main.do?apiGrpCd=DS004">실시간 뉴스</a></li>
+                  <li><a href="economicIndication">경제 지표</a></li>
                     </ul>
                 </li>
                 <li>

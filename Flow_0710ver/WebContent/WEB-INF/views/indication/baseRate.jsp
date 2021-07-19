@@ -19,7 +19,7 @@
 	<div class="container" style="margin-top: 150px;">
 		<div>
 			<div>
-			<h1>기준금리 확인!</h1>
+			<h1>한국 기준금리</h1>
 				<div id=graph></div>
 			</div>
 		</div>

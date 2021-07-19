@@ -35,8 +35,6 @@ import flow.mvc.vo.CompanyVO;
 public class TestController {
 
 	@Autowired
-	private StockService stockService;
-	@Autowired
 	private Suggest suggest;
 
 	@RequestMapping("/test")
@@ -73,83 +71,7 @@ public class TestController {
 		return mav;
 	}
 
-	@GetMapping(value = { "/companyDetail" })
-	public ModelAndView companyDetail2(String c_code, String slike_id) throws Exception {
-		// 회사 상세정보 받아오기-----
-		System.out.println("StockController - companyDetail");
-		ModelAndView mav = new ModelAndView();
-		CompanyVO cvo = stockService.companyDetail(c_code);
-
-		// 좋아요 여부 받아오기-----
-		// String slike_code = c_code;
-		int status = stockService.LikeStatus(c_code, slike_id);
-
-		mav.addObject("cvo", cvo);
-		mav.addObject("likeStatus", status);
-		List<Map<String, String>> list = newsPage2(c_code);
-		mav.addObject("list", list);
-		mav.setViewName("stock/companyDetail2");
-		return mav;
-	}
-
-	private List<Map<String,String>> newsPage2(String c_code) throws Exception {
-		String url = "https://finance.naver.com/item/news_news.nhn?code="+c_code;
-		System.out.println("url :::::::: "+url);
-		String selector = "body > div > table.type5 > tbody > tr > td.title > a";
-		Document doc = null;
-
-		try {
-			doc = Jsoup.connect(url).get(); // 1. get방식의 URL에 연결해서 가져온 값을 doc에 담는다.
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-
-		Elements titles = doc.select(selector); // 2. doc에서 selector의 내용을 가져와 Elementes 클래스에 담는다.
-        System.out.println("?titles size? ::::: "+titles.size());
-		List<Map<String,String>> list = new ArrayList<Map<String,String>>(); 
-		int count = 0;
-		for (Element element : titles) { 
-			Map<String,String> map = new HashMap<>(); 
-			map.put("title", element.text());
-			System.out.println("???? ::::: "+element.text());
-			String href = "https://finance.naver.com"+element.attr("href");
-			map.put("href",href);
-			String selector2 = "span.end_photo_org > img";
-			doc = Jsoup.connect(href).get();
-			Element img = doc.select(selector2).first();
-			if (img != null) map.put("img",img.attr("src"));
-			
-			list.add(map);
-			count += 1;
-			if (count == 3){break;}
-		}
-
-		return list;
-	}
 	
 	
-	@RequestMapping("/searchform")
-	public String suggestClient() {
-		return "search/searchForm";
-	}
-	
-	@GetMapping("/search")
-	public String suggestAction(Model m, String key) {
-		 List<Map<String,String>> suggests = suggest.getSuggest(key);
-		// XML데이터를 JSON으로 변경하는 작업
-		// XML 읽어들이는 방법 이해 목적 *****
-		// JSON으로 변경해서 서비스 하는방법 이해 목적 *****
-		if(suggests != null) {
-			JSONArray arr = new JSONArray();
-			for(Map<String,String> e : suggests) {
-				arr.add(e);
-			}
-//			System.out.println(arr);
-			// JSONArray로 변경
-			System.out.println("arrjson :::"+arr.toJSONString(suggests));
-			m.addAttribute("list",arr.toJSONString(suggests));
-		}
-		return "search/ajax/search";
-	}
 
 }

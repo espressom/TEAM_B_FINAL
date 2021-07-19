@@ -17,11 +17,9 @@ import flow.mvc.controller.member.MemberController;
 @Component
 @Aspect
 public class Advice {
+	
 	private static final Log LOG = LogFactory.getLog( Advice.class );
-
 	  	
-	// advice 수정
-
 	private void printParam(ProceedingJoinPoint pjp) {
 		Object[] param = pjp.getArgs();
 		if (param.length != 0) {
@@ -34,18 +32,20 @@ public class Advice {
 
 	@Around(value = "execution(* flow.mvc.controller.*.*.*(..))")
 	public Object logAdvice(ProceedingJoinPoint pjp) throws Throwable {
-		// MethodInvocation을 통해 메서드 정보, 타겟 오브젝트에 대한 정보 알 수있다
+
 		String methodName = pjp.getSignature().getName();
-		LOG.info("======================================");
-		LOG.info("| [LOG]  METHOD  :: " + methodName + " 호출");
+		String[] classNames = pjp.getTarget().getClass().getCanonicalName().split("\\.");
+		String className = classNames[classNames.length-1];		
+		LOG.info("=================================================");
+		LOG.info("| [LOG]  "+className+" :: " + methodName + " 호출");
 		printParam(pjp);
 		Object rev = pjp.proceed();
 		if (rev != null) {
 			LOG.info("| returnv :: " + rev);
 		}
 		printParam(pjp);
-		LOG.info("| [LOG]  METHOD  :: " + methodName + " 종료");
-		LOG.info("======================================");
+		LOG.info("| [LOG]  "+className+" :: " + methodName + " 종료");
+		LOG.info("=================================================");
 		return rev;
 	}
 }

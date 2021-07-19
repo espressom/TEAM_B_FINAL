@@ -82,6 +82,7 @@
 	}
 
 	function viewTable() { //callback 받은 json 데이터를 ui에 표시
+		// 너무 구리다 제이쿼리로 바꾸자..
 		var vD = document.getElementById("view");
 		var htmlTxt = "<table width='300' border='0' cellspacing='0'>";
 
@@ -99,14 +100,14 @@
 		vD.innerHTML = htmlTxt;
 		vD.style.display = "block";
 	}
-	function select(i) {
-		f.word.value = jsonObj[i];
-		document.getElementById("view").style.display = 'none';
-		check = false;
-		loopkey = false;
-	}
+// 	function select(i) {
+// 		f.word.value = jsonObj[i];
+// 		document.getElementById("view").style.display = 'none';
+// 		check = false;
+// 		loopkey = false;
+// 	}
 	function search(code) {
 		code = String(code).padStart(6, '0');
-		location.href="companyDetail?c_code="+code+"&slike_id="
+		location.href="companyDetail?c_code="+code+"&slike_id="+"${sessionScope.sessionID}"
 	}
 </script>

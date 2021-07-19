@@ -11,16 +11,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONArray;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import flow.mvc.domain.Suggest;
 import flow.mvc.service.StockService;
 import flow.mvc.vo.CompanyVO;
 
@@ -33,6 +36,8 @@ public class TestController {
 
 	@Autowired
 	private StockService stockService;
+	@Autowired
+	private Suggest suggest;
 
 	@RequestMapping("/test")
 	public String testPage() {
@@ -120,6 +125,31 @@ public class TestController {
 		}
 
 		return list;
+	}
+	
+	
+	@RequestMapping("/searchform")
+	public String suggestClient() {
+		return "search/searchForm";
+	}
+	
+	@GetMapping("/search")
+	public String suggestAction(Model m, String key) {
+		 List<Map<String,String>> suggests = suggest.getSuggest(key);
+		// XML데이터를 JSON으로 변경하는 작업
+		// XML 읽어들이는 방법 이해 목적 *****
+		// JSON으로 변경해서 서비스 하는방법 이해 목적 *****
+		if(suggests != null) {
+			JSONArray arr = new JSONArray();
+			for(Map<String,String> e : suggests) {
+				arr.add(e);
+			}
+//			System.out.println(arr);
+			// JSONArray로 변경
+			System.out.println("arrjson :::"+arr.toJSONString(suggests));
+			m.addAttribute("list",arr.toJSONString(suggests));
+		}
+		return "search/ajax/search";
 	}
 
 }

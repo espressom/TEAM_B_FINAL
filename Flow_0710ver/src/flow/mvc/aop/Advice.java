@@ -2,12 +2,16 @@ package flow.mvc.aop;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import flow.mvc.controller.member.MemberController;
 
@@ -36,8 +40,12 @@ public class Advice {
 		String methodName = pjp.getSignature().getName();
 		String[] classNames = pjp.getTarget().getClass().getCanonicalName().split("\\.");
 		String className = classNames[classNames.length-1];		
+		HttpSession session = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest().getSession();
 		LOG.info("=================================================");
 		LOG.info("| [LOG]  "+className+" :: " + methodName + " 호출");
+		String sessionID = (String) session.getAttribute("sessionID");
+		if ( sessionID != null)
+		LOG.info("| [B Y]  "+ sessionID);
 		printParam(pjp);
 		Object rev = pjp.proceed();
 		if (rev != null) {
@@ -45,6 +53,9 @@ public class Advice {
 		}
 		printParam(pjp);
 		LOG.info("| [LOG]  "+className+" :: " + methodName + " 종료");
+		sessionID = (String) session.getAttribute("sessionID");
+		if ( sessionID != null)
+		LOG.info("| [B Y]  "+ sessionID);
 		LOG.info("=================================================");
 		return rev;
 	}

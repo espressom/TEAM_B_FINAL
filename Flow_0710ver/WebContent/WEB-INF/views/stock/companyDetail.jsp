@@ -140,7 +140,7 @@
 <script>
 	$(function() {
 		$.ajax({
-		    url:'http://192.168.0.3:8099/shop/make_chart?code=${cvo.c_code }',
+		    url:'http://192.168.0.12:8099/shop/make_chart?code=${cvo.c_code }',
 		    type:'GET',
 		    dataType:'jsonp',
 		    success:function(data){

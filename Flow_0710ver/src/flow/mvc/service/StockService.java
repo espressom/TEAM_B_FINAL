@@ -47,7 +47,7 @@ public class StockService {
 	public String stockPrice(String c_code) {
 
 		String url = "https://finance.naver.com/item/main.nhn?code="+c_code;
-		String selector = "#chart_area > div.rate_info > div > p.no_today > em > .blind";
+		String today = "#chart_area > div.rate_info > div > p.no_today > em > .blind";
 		Document doc = null;
 
 	      try {
@@ -56,7 +56,7 @@ public class StockService {
 	         System.out.println(e.getMessage());
 	      }
 
-	      Elements ele = doc.select(selector); // 2. doc에서 selector의 내용을 가져와 Elementes 클래스에 담는다.
+	      Elements ele = doc.select(today); // 2. doc에서 selector의 내용을 가져와 Elementes 클래스에 담는다.
 	      String price = ele.text();
 	      System.out.println(price);
 	      return price;
@@ -65,14 +65,25 @@ public class StockService {
 	
 	
 
-	// 내 관심종목 (좋아요)
+	// 내 관심종목 (좋아요) 에 표시될 종목 가격정보
 	public List<CompanyVO> listLike(String slike_id) {
 		List<CompanyVO> slist = stockDaoInter.listLike(slike_id);
  
 		
-		String selector = "#chart_area > div.rate_info > div > p.no_today > em > .blind";
+		String today_sel = "#chart_area > div.rate_info > div > p.no_today > em > .blind";
+		String exday_sel = "#chart_area > div.rate_info > table > tbody > tr:nth-child(1) > td.first > em > span.blind";
+		String comp_sel = "#chart_area > div.rate_info > div > p.no_exday > em > span:nth-child(1)"; // 하락이냐 상승이냐
+		
+		String comp_pri_sel="#chart_area > div.rate_info > div > p.no_exday > em:nth-child(2) > span.blind";
+		String comp_per_sel="#chart_area > div.rate_info > div > p.no_exday > em:nth-child(4) > span.blind";
+		
+		String open_sel = "#chart_area > div.rate_info > table > tbody > tr:nth-child(2) > td.first > em > span.blind";
+		String high_sel = "#chart_area > div.rate_info > table > tbody > tr:nth-child(1) > td:nth-child(2) > em > span.blind "; 
+		String low_sel = "#chart_area > div.rate_info > table > tbody > tr:nth-child(2) > td:nth-child(2) > em > span.blind ";  
+		String volume_sel = "#chart_area > div.rate_info > table > tbody > tr:nth-child(1) > td:nth-child(3) > em > span.blind";
+		
 		Document doc = null;
-	 
+		
 		for (CompanyVO c : slist) {
 			String url = "https://finance.naver.com/item/main.nhn?code="+c.getC_code();
 			
@@ -82,12 +93,42 @@ public class StockService {
 		         System.out.println(e.getMessage());
 		      }
 		
-		Elements ele = doc.select(selector); // 2. doc에서 selector의 내용을 가져와 Elementes 클래스에 담는다.
-		String price = ele.text();
-		c.setC_price(price);
- 
-		}
+		Elements today_ele = doc.select(today_sel); // 2. doc에서 selector의 내용을 가져와 Elementes 클래스에 담는다.
+		Elements exday_ele = doc.select(exday_sel);
+		Elements comp_ele = doc.select(comp_sel);
+		
+		Elements comp_pri_ele = doc.select(comp_pri_sel);
+		Elements comp_per_ele = doc.select(comp_per_sel);
 	
+		Elements open_ele =  doc.select(open_sel);
+		Elements high_ele =  doc.select(high_sel);
+		Elements low_ele =  doc.select(low_sel);
+		Elements volume_ele =  doc.select(volume_sel);
+	
+		String today = today_ele.text(); //오늘가격
+		String exday = exday_ele.text(); // size=2size=2 size=2전일가격
+		String compare = comp_ele.text(); // 전일비 (상승/하락)
+		String comp_pri = comp_pri_ele.text(); // 전일비 (가격)
+		String comp_per = comp_per_ele.text(); // 전일비 (비율)
+		String open = open_ele.text(); // 시가
+		String high = high_ele.text(); // 고가
+		String low = low_ele.text(); // 저가
+		String volume = volume_ele.text(); // 거래량
+		
+		
+		
+		c.setPrice(today);
+		c.setExday(exday);
+		c.setCompare(compare);
+		c.setCom_price(comp_pri);
+		c.setCom_percent(comp_per);
+		c.setOpen(open);
+		c.setLow(low);
+		c.setVolume(volume);
+		c.setHigh(high); 
+		}
+ 
+ 
 	return slist;
 	}
 	 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,15 +23,26 @@
 					<table class="tb01" style="width:130%;" >
 						<caption>관심종목 리스트</caption>
 		 		 	<colgroup>
-							<col width="20%" />
-							<col width="50%" />
-							<col width="30%" />
+							<col width="10%" /> <!-- 종목코드 -->
+							<col width="20%" /> <!-- 회사명 -->
+							<col width="20%" /> <!-- 현재가 -->
+							<col width="10%" /> <!-- 전일가 -->
+							<col width="10%" /> <!-- 시가 -->
+							<col width="15%" /> <!-- 고가 -->
+							<col width="10%" /> <!-- 저가 -->
+							<col width="10%" /> <!-- 거래량 -->
 						</colgroup>
 						<thead>
 							<tr align="center">
 								<th scope="col"><label>종목 코드</label></th>
 								<th scope="col"><label>회사명</label></th>
-								<th scope="col"><label>현재가</label></th>
+								<th scope="col"><label>현재가 <br>
+								<font size=2 style="font-weight:normal">( <fmt:formatDate value="${now}" pattern="yyyy-MM-dd hh:mm:ss" />  기준 )</font> </label></th>
+							<th scope="col"><label>전일가</label></th>
+							<th scope="col"><label>시가</label></th>
+							<th scope="col"><label>고가 / 상한가 </label></th>
+							<th scope="col"><label>저가</label></th>
+							<th scope="col"><label>거래량</label></th>
 							</tr>
 						</thead>
 						
@@ -39,9 +51,21 @@
 							<tr>
 								 <td>${c.c_code}</td>
 								 <td><a href="companyDetail?c_code=${c.c_code}&slike_id=${sessionScope.sessionID}">${c.c_name}</a></td>
-								  <td>${c.c_price}</td>
+								  <td>${c.price} 원 <br>
+				
+                 				  <c:if test="${c.compare == '하락 -'}">
+								  <font size=2 color="blue">▼ ${c.com_price} 원 / ${c.com_percent} %</font></c:if>
+				 				  <c:if test="${c.compare == '상승 +'}">
+								  <font size=2 color="red">▲ ${c.com_price} 원 / ${c.com_percent} %</font></c:if>
+								  
+								  </td> 
+								  <td>${c.exday} </td>
+								  <td>${c.open}</td>
+								  <td>${c.high}</td>
+								  <td>${c.low}</td>
+								  <td>${c.volume} 주</td>
 								 </c:forEach>
-					 
+					
 						</tbody>
 					</table>
 				</div>

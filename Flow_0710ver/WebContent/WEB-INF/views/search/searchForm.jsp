@@ -12,13 +12,17 @@
 			</div>
 
 			<!-- 리스트 -->
-			<form name="f"  autocomplete="off">
+			<form name="f" autocomplete="off">
 				<input type="text" style="width: 300px;" name="word" id="word"
 					onkeydown="startSuggest();" /> <input type="submit" value="검색" />
 				<div id="view"></div>
 			</form>
 
 			<!-- //리스트 -->
+
+
+			<!-- WordCloud -->
+			<div id="jqcloud"></div>
 
 
 
@@ -31,6 +35,11 @@
 
 <script src="resources/js/httpRequest.js"></script>
 <script src="resources/js/json2.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud.css"
+	rel="stylesheet" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.js"></script>
 <script>
 	var lastkey = ''; // 최종키
 	var check = false; // 검색 체크 상태
@@ -110,4 +119,76 @@
 		code = String(code).padStart(6, '0');
 		location.href="companyDetail?c_code="+code+"&slike_id="+"${sessionScope.sessionID}"
 	}
+	
+	
+	// wordcloud
+	$(function() {
+		$.ajax({
+			type: "GET",
+			url:"wordcloud",
+			dataType : 'json',
+			success:function(data) {
+				codes=[];
+				tags=[];
+				for ( var e of data) {
+					codes.push(e.c_code);
+					tags.push(e.c_name);
+				}
+				var words = [];
+				  tags.forEach(t => {
+				    var key = t;
+				    if (words[key]) {
+				      words[key] = words[key] + 1;
+				    } else {
+				      words[key] = 1;
+				    }
+				  });
+				var words = [];
+				  tags.forEach(t => {
+				    var key = t;
+				    if (words[key]) {
+				      words[key] = words[key] + 1;
+				    } else {
+				      words[key] = 1;
+				    }
+				  });
+				  tags.forEach(t => {
+					    var key = t;
+					    if (words[key]) {
+					      words[key] = words[key] + 1;
+					    } else {
+					      words[key] = 1;
+					    }
+					  });
+				  console.log(words)
+// 				  var tagCloudWords = Object.keys(words).map(w => {
+// 					    return {
+// 					      text: w, weight: words[w], link: 'companyDetail?c_code=' + w
+// 					    };
+// 					  });
+				  var tagCloudWords = Object.keys(words).map(w => {
+					    return {
+					      text: w, weight: words[w], link: 'companyDetail?c_code=' + w
+					    };
+					  });
+				  
+				  
+					  $('#jqcloud').jQCloud(tagCloudWords,
+					    {
+					      height: 400,
+					      autoResize: true,
+//			 		      fontSize: { from: 0.1, to: 0.01 }
+					    }
+					  );
+				  
+				 
+			},
+			error: function (e) {
+				console.log("error : " + e);
+			}
+		});
+
+		  
+		  
+	 });
 </script>

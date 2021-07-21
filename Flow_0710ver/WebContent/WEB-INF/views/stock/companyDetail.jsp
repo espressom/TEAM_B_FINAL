@@ -14,29 +14,32 @@
 
 				<!-- 메인컨텐츠 영역 시작 -->
 				<div class="head_tit">
-					<h3>${cvo.c_name }    : ${price } 원 / 주
-				
-				<c:choose>
-					<c:when test="${sessionScope.sessionID != null}">
+					<h3>${cvo.c_name }
+						: ${price } 원 / 주
+
 						<c:choose>
-							<c:when test="${likeStatus == 0}">
-								<a href="javascript:likeUpdate()" class="likeRef">
-								<img src="./resources/images/btn/heart2.svg" width="20px" class="likeImg"/>
-								</a>
+							<c:when test="${sessionScope.sessionID != null}">
+								<c:choose>
+									<c:when test="${likeStatus == 0}">
+										<a href="javascript:likeUpdate()" class="likeRef"> <img
+											src="./resources/images/btn/heart2.svg" width="20px"
+											class="likeImg" />
+										</a>
+									</c:when>
+									<c:when test="${likeStatus == 1}">
+										<a href="javascript:likeUpdate()" class="likeRef"> <img
+											src="./resources/images/btn/heart1.svg" width="20px"
+											class="likeImg" />
+										</a>
+									</c:when>
+								</c:choose>
 							</c:when>
-							<c:when test="${likeStatus == 1}">
-								<a href="javascript:likeUpdate()" class="likeRef">
-								<img src="./resources/images/btn/heart1.svg" width="20px" class="likeImg"/>
-								</a>
-							</c:when>
-						</c:choose>	
-					</c:when>
-				<%-- 	<c:when test="${sessionScope.sessionID == null}">
+							<%-- 	<c:when test="${sessionScope.sessionID == null}">
 						<img src="./resources/images/btn/heart1.svg" width="20px" class="likeImg"/>
 						
 					</c:when> --%>
-				</c:choose>	
-				</h3>
+						</c:choose>
+					</h3>
 				</div>
 
 				<!-- 리스트 -->
@@ -103,20 +106,16 @@
 
 				<!-- //리스트 -->
 				<!-- 그래프 -->
-				<div id="graph">
-					
-				</div>
+				<div id="graph"></div>
 				<br>
 				<!-- 그래프 -->
 				<!-- 뉴스 -->
 				<div class="introWarp">
 					<c:forEach var="e" items="${list}">
 						<div class="intro">
-							<div style="width: 260px; height: 180px;
-							 text-align: center;">
+							<div style="width: 260px; height: 180px; text-align: center;">
 								<img alt="img" src=${e.img }
-									style="max-width: 260px; 
-									max-height: 180px;">
+									style="max-width: 260px; max-height: 180px;">
 							</div>
 							<h5>
 								<a href=${e.href }>${e.title }</a>
@@ -127,6 +126,9 @@
 				</div>
 
 
+				
+
+
 				<div></div>
 				<!-- 메인컨텐츠 영역 끝 -->
 
@@ -135,7 +137,9 @@
 	</div>
 </body>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script>
 	$(function() {
 		$.ajax({
@@ -181,5 +185,11 @@
 		
 		//console.log($('forEach').attr("items"));
 	}
+	
+	
+
+
+
+
 </script>
 </html>

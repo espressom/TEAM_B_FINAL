@@ -63,6 +63,11 @@ public class StockDao implements StockDaoInter {
 		return ss.selectOne("stock.count_like", c_code);
 		
 	}
+
+	@Override
+	public String c_code_to_c_name(String c_code) {
+		return ss.selectOne("stock.c_code_to_c_name",c_code);
+	}
  
 	
 	

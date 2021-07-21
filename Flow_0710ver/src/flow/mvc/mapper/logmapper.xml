@@ -12,5 +12,9 @@
 		)
 	</insert>
 
-    
+	<select id="getCDetailLog" resultType="lvo">
+		select params from log where request='companyDetail'
+	</select>
+
+
 </mapper>

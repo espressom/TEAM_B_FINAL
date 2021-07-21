@@ -18,5 +18,5 @@ public interface StockDaoInter {
 	public void delLike(StockLikeVO slvo);
 	public int countLike(String c_code);
 	public List<CompanyVO> listLike(String slike_id);
- 
+    public String c_code_to_c_name(String c_code);
 }

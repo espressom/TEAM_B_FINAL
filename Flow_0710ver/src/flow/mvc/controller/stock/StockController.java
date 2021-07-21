@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.json.simple.JSONArray;
 import org.jsoup.Jsoup;
@@ -19,8 +20,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import flow.mvc.dao.log.LogDaoInter;
 import flow.mvc.service.StockService;
 import flow.mvc.vo.CompanyVO;
+import flow.mvc.vo.LogVO;
 import flow.mvc.vo.StockLikeVO;
 
 @Controller
@@ -28,6 +32,8 @@ public class StockController {
 
 	@Autowired
 	private StockService stockService;
+	@Autowired
+	private LogDaoInter logDaoInter;
 
 	@RequestMapping("/companyList")
 	public ModelAndView companyList() {
@@ -158,6 +164,33 @@ public class StockController {
 		mav.addObject("now", now);
 		mav.setViewName("stock/myPortfolio");
 		return mav;
+	}
+	
+	
+	@RequestMapping("/wordcloud")
+	public ModelAndView getCompanyWordCloud() throws Exception {
+		List<LogVO> paramList = logDaoInter.getCDetailLog();
+		List<String> codeList = paramList.stream().map(i -> i.getParams().split("/")[0]).collect(Collectors.toList());
+		List<String> nameList = codeList.stream().map(i -> c_code_to_c_name(i)).collect(Collectors.toList());
+		List<Map<String,String>> result = new ArrayList<Map<String,String>>();
+		for (int j = 0; j < codeList.size(); j++) {
+			Map<String, String> map = new HashMap<String, String>();
+			String c_name = nameList.get(j);
+			String c_code = codeList.get(j);
+			map.put("c_name", c_name);
+			map.put("c_code", c_code);
+			result.add(map);
+		}
+		JSONArray arr = new JSONArray();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("result",  arr.toJSONString(result));
+		mav.setViewName("stock/ajax/wordcloud");
+		System.out.println(arr.toJSONString(result));
+		return mav;
+	}
+	
+	private String c_code_to_c_name(String c_code) {
+		return stockService.c_code_to_c_name(c_code);
 	}
 
 }

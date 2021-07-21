@@ -1,5 +1,7 @@
 package flow.mvc.dao.log;
 
+import java.util.List;
+
 import flow.mvc.vo.LogVO;
 
 /**
@@ -8,5 +10,6 @@ import flow.mvc.vo.LogVO;
 public interface LogDaoInter {
 	
 	public void addlog(LogVO lvo);
+	public List<LogVO> getCDetailLog();
 
 }

@@ -47,4 +47,8 @@ select c.c_code, c.c_name from stock_like s, company c
 where slike_id=#{slike_id} and s.slike_code=c.c_code
 </select>
 
+<select id="c_code_to_c_name" parameterType="String" resultType="String">
+SELECT c_name FROM company WHERE c_code=#{c_code}
+</select>
+
 </mapper>

@@ -162,5 +162,9 @@ public class StockService {
 
 		return res;
 	}
+	
+	public String c_code_to_c_name(String c_code) {
+		return stockDaoInter.c_code_to_c_name(c_code);
+	}
   
 }

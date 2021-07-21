@@ -14,8 +14,8 @@
 
 				<!-- 메인컨텐츠 영역 시작 -->
 				<div class="head_tit">
-					<h3>${cvo.c_name }
-					
+					<h3>${cvo.c_name }    : ${price } 원 / 주
+				
 				<c:choose>
 					<c:when test="${sessionScope.sessionID != null}">
 						<c:choose>
@@ -31,13 +31,12 @@
 							</c:when>
 						</c:choose>	
 					</c:when>
-					<c:when test="${sessionScope.sessionID == null}">
+				<%-- 	<c:when test="${sessionScope.sessionID == null}">
 						<img src="./resources/images/btn/heart1.svg" width="20px" class="likeImg"/>
 						
-					</c:when>
+					</c:when> --%>
 				</c:choose>	
-					
-					</h3>
+				</h3>
 				</div>
 
 				<!-- 리스트 -->
@@ -79,7 +78,7 @@
 								<td>${cvo.c_ipo}</td>
 								<td>${cvo.c_closingmonth}</td>
 								<td>${cvo.c_ceo}</td>
-								<td><font size=2> ${cvo.c_homepage}</font></td>
+								<td><font size=2> <a href="${cvo.c_homepage}">${cvo.c_homepage}</a></font></td>
 								<td><font size=2> ${cvo.c_location}</font></td>
 							</tr>
 
@@ -152,6 +151,13 @@
 
 
 	function likeUpdate() {
+	/* 	
+		if ( ${sessionScope.sessionID} == null) {
+			alert("로그인 해 주세요")
+			return false;
+			
+		} else { */
+			 
 		$.ajaxSetup({cache: false});
 		$.ajax({
 			type: "GET",
@@ -171,6 +177,8 @@
 				console.log("error : " + e);
 			}
 		});
+		
+		
 		//console.log($('forEach').attr("items"));
 	}
 </script>

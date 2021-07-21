@@ -205,7 +205,7 @@
                            class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
                            type="submit" id="submit"
                            style="width: 200px; background-color: #0c69ef" disabled>수정하기</button>
-                        <a href="delMember?mId=${vo.m_id}"><button
+                        <a href="delChk"><button
                            class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
                            type="button" id="submit"
                            style="width: 200px; background-color: #0c69ef" disabled>탈퇴하기</button></a>

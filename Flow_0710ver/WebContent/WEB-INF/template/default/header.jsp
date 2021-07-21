@@ -6,7 +6,7 @@
     <div id="header">
         <div class="headerWrap">
          <div class="headerTop">
-            <h1><a href="index"><img src="resources/images/logo.svg" style="width: 120px; padding-top: 5px" alt="오픈다트 로고"/></a></h1>
+            <h1><a href="index"><img src="resources/images/logo.svg" style="width: 120px; padding-top: 5px"/></a></h1>
             <div class="util_menu">
             <form name="selectOne" method="post">
                <ul>
@@ -28,7 +28,7 @@
          </div>
             <ul class="gnb">
                 <li>
-                    <a href="/intro/main.do">Flow 소개</a>
+                    <a href="#">Flow 소개</a>
                     <ul class="first">
                         <li><a href="/intro/main.do">오픈API 소개</a></li>
                         <li><a href="/intro/infoApiList.do">오픈API 서비스 소개</a></li>
@@ -37,7 +37,7 @@
                     </ul>
                 </li>
                 <li>
-                     <a href="/mng/userApiKeyListView.do">개인 재무/자산</a>
+                     <a href="#">개인 재무/자산</a>
                     <ul>
                   <li><a href="/uss/umt/EgovMberInsertView.do">인증키 신청</a></li>
                   <li><a href="/mng/userApiKeyListView.do">인증키 관리</a></li>
@@ -45,21 +45,24 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/guide/main.do?apiGrpCd=DS001">주식 및 기업정보</a>
+                    <a href="#">주식 및 기업정보</a>
                     <ul>
-                        <li><a href="/guide/main.do?apiGrpCd=DS001">상장 기업 정보</a></li>
-                  <li><a href="/guide/main.do?apiGrpCd=DS002">마이 포트폴리오</a></li>
+                        <li><a href="companyList">상장 기업 정보</a></li>
+                 
                   <li><a href="/guide/main.do?apiGrpCd=DS003">종목 분석</a></li>
                   <li><a href="/guide/main.do?apiGrpCd=DS004">실시간 뉴스</a></li>
+                  <li><a href="economicIndication">경제 지표</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/disclosureinfo/biz/main.do">My Flow</a>
+                    <a href="#">My Flow (회원전용)</a>
                     <ul>
-                        <li><a href="/disclosureinfo/biz/main.do">분석자료위주메뉴</a></li>
+                    <li><a href="#">마이 포트폴리오</a></li>
+                   <li><a href="myStock?slike_id=${sessionScope.sessionID}">관심종목</a></li>
+                  <li><a href="/disclosureinfo/biz/main.do">분석자료위주메뉴</a></li>
                   <li><a href="/disclosureinfo/fnltt/singl/main.do">재무정보조회</a></li>
                   <li><a href="/disclosureinfo/fnltt/dwld/main.do">재무정보일괄다운로드</a></li>
-                  <li><a href="/disclosureinfo/qota/main.do">지분공시 종합정보조회</a></li>
+                 
                     </ul>
                 </li>
                 <li>

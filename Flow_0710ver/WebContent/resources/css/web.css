@@ -31,7 +31,7 @@
 
 .errorWrap {width:600px;background:#0092df;margin:0 auto;padding:5px;position:relative;margin-top:100px;}
 .errorBox {padding:30px 30px 30px 30px;background:#fff;position:relative; text-align:center;} 
-.errorBox .errorLogo {width:113px;height:38px; margin:auto;margin-top:20px;background:url('../images/logo.png') no-repeat;background-size:100%;display:block;font-size:0px;cursor:pointer;} 
+.errorBox .errorLogo {width:113px;height:38px; margin:auto;margin-top:20px;background:url('../images/error_logo.png') no-repeat;background-size:100%;display:block;font-size:0px;cursor:pointer;} 
 .errorBox .titWrap {margin:auto;padding:30px 0px 30px 0px;} 
 .errorBox .titWrap .txt_100 {color:#0092df;font-size:100px;font-weight:900; line-height:100px;margin-right:20px} 
 .errorBox .titWrap .txt_40 {color:#555;font-weight:700;font-size:40px; line-height:40px;} 
@@ -712,6 +712,7 @@
 .tb01 td{padding:10px 10px 10px 10px;border-bottom:1px solid #e1e1e1;border-left:1px solid #e1e1e1;text-align:center}
 .tb01 td:first-child {border-left:none;}
 .tb01 td a{display:inline-block;position:relative;text-decoration:none;}
+.tb01 td a:visited{color : black;text-decoration:none;}
 .tb01 td a:hover, 
 .tb01 td a:focus{text-decoration:none;}
 .tb01 .link {color:#0092df;font-weight:700;cursor:pointer;}

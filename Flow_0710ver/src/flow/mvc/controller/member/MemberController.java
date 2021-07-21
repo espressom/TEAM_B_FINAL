@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import flow.mvc.dao.member.MemberDaoInter;
@@ -57,7 +59,7 @@ public class MemberController {
 
 	@PostMapping("/loginProcess")
 	public ModelAndView loginProcess(MemberVO mvo, HttpSession session, HttpServletRequest request) {
-		System.out.println("MemberController  - loginProcess 빳럼");
+		System.out.println("MemberController  - loginProcess 진입");
 		ModelAndView mav = new ModelAndView();
 		MemberVO loginvo = memberService.loginProcess(mvo);
 
@@ -152,18 +154,34 @@ public class MemberController {
 		mav.setViewName("redirect:/");
 		return mav;
 	}
-
+	// 회원탈퇴
 	@RequestMapping("/delMember")
-	public String delMember(HttpServletRequest request, HttpSession session) {
-		System.out.println("회원 탈퇴!");
-		// 겟방식으로 아이디 받아온다!
-		String m_id = request.getParameter("mId");
-		System.out.println("삭제 할 아이디 : " + m_id);
-		memberService.delMem(m_id);
-		System.out.println("삭제 완료");
-		session.removeAttribute("sessionID");
-		session.removeAttribute("sessionName");
-		return "redirect:/";
+	@ResponseBody
+	public ModelAndView delMember(MemberVO mvo, HttpSession session, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		// 회원 탈퇴전에 비밀번호 확인!		
+		String m_id = session.getAttribute("sessionID").toString();
+		mvo.setM_id(m_id);
+		
+		// 비밀번호 일치 여부
+		int res = memberService.isValidPwd(mvo);
+		
+		if(res == 1) {
+			
+			memberService.delMem(mvo.getM_id());
+			session.removeAttribute("sessionID");
+			session.removeAttribute("sessionName");
+			
+			mav.addObject("idpwdchk", "탈퇴처리되었습니다. 이용해 주셔서 감사합니다.");
+			mav.setViewName("mng/delOk");
+			return mav;
+		} else {
+			mav.addObject("idpwdchk", "회원 탈퇴 실패! 비밀번호를 확인해 주세요.");
+			mav.setViewName("mng/delPwdChkErr");
+			return mav;
+			}
+			
+		
 	}
 
 	@PostMapping("/isvalidpwd")
@@ -187,5 +205,14 @@ public class MemberController {
 		}
 
 	}
+	
+	// 회원 탈퇴 확인
+	@RequestMapping("/delChk")
+	public String delChk() {
+		System.out.println("회원탈퇴 확인절차");
+		
+		return "mng/delCheckForm";
+	}
+	
 
 }

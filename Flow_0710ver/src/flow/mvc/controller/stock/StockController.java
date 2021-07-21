@@ -42,6 +42,14 @@ public class StockController {
 		CompanyVO cvo = stockService.companyDetail(c_code);
 		String price = stockService.stockPrice(c_code);
 		
+		// 종목 정보 받아오기 (종목코드, 종목이름)
+		Date now = new Date();
+		
+		// 종목코드 + 종목이름
+		List<CompanyVO> slist = stockService.listLike(slike_id);
+		mav.addObject("slist", slist);
+		mav.addObject("now", now);
+		
 		// 좋아요 여부 받아오기-----
 		int status = stockService.LikeStatus(c_code, slike_id);
 		

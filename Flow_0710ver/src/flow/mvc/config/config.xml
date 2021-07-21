@@ -7,6 +7,6 @@
 		<typeAlias type="flow.mvc.vo.MemberVO" alias="mvo" />
 		<typeAlias type="flow.mvc.vo.CompanyVO" alias="cvo"/>
 		<typeAlias type="flow.mvc.vo.StockLikeVO" alias="slvo"/>
-		
+		<typeAlias type="flow.mvc.vo.LogVO" alias="lvo"/>
 	</typeAliases>
 </configuration> 

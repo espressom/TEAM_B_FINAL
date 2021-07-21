@@ -57,9 +57,9 @@
                 <li>
                     <a href="#">My Flow (회원전용)</a>
                     <ul>
-                   <li><a href="myPortfolio?slike_id=${sessionScope.sessionID}">마이 포트폴리오</a></li>
+                  <li><a href="myPortfolio?slike_id=${sessionScope.sessionID}">마이 포트폴리오</a></li>
                   <li><a href="/disclosureinfo/biz/main.do">분석자료위주메뉴</a></li>
-                  <li><a href="/disclosureinfo/fnltt/singl/main.do">재무정보조회</a></li>
+                  <li><a href="estiInvestForm">투자 예측(진행중)</a></li>
                   <li><a href="/disclosureinfo/fnltt/dwld/main.do">재무정보일괄다운로드</a></li>
                   <li><a href="/disclosureinfo/qota/main.do">지분공시 종합정보조회</a></li>
                     </ul>

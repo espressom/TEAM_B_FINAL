@@ -29,7 +29,7 @@
 $(function(){
 
         $.ajax({
-            url:'http://192.168.0.25:8099/shop/baseRate?callback',
+            url:'http://192.168.0.5:8099/shop/baseRate?callback',
             type:'GET',
             dataType:'jsonp',
             success:function(data){

@@ -57,24 +57,30 @@ public class MemberController {
 		return "mng/userCheckForm";
 	}
 
+	// 로그인 - 아이디 비밀번호 확인
 	@PostMapping("/loginProcess")
 	public ModelAndView loginProcess(MemberVO mvo, HttpSession session, HttpServletRequest request) {
 		System.out.println("MemberController  - loginProcess 진입");
 		ModelAndView mav = new ModelAndView();
 		MemberVO loginvo = memberService.loginProcess(mvo);
-
-		if (loginvo == null) {
-
-			mav.addObject("idpwdchk", "로그인 실패. 아이디 or 패스워드를 확인해 주세요.");
+		
+		int delMemChk = memberService.delMemChk(mvo);
+		System.out.println("회원 상태 번호 : "+delMemChk);
+		if (delMemChk == 9) {
+			mav.addObject("idpwdchk", "로그인 실패. 탈퇴한 회원입니다.");
 			mav.setViewName("member/login_err");
-
+			
 		} else {
-			session.setAttribute("sessionID", mvo.getM_id());
-			session.setAttribute("sessionName", loginvo.getM_name());
-			System.out.println("sessionID ::::" + session.getAttribute("sessionID"));
-			mav.setViewName("redirect:/");
+			if (loginvo == null) {
+				mav.addObject("idpwdchk", "로그인 실패. 아이디 or 패스워드를 확인해 주세요.");
+				mav.setViewName("member/login_err");
+			} else {
+				session.setAttribute("sessionID", mvo.getM_id());
+				session.setAttribute("sessionName", loginvo.getM_name());
+				System.out.println("sessionID ::::" + session.getAttribute("sessionID"));
+				mav.setViewName("redirect:/");
+			}
 		}
-
 		return mav;
 	}
 
@@ -213,6 +219,6 @@ public class MemberController {
 		
 		return "mng/delCheckForm";
 	}
-	
+
 
 }

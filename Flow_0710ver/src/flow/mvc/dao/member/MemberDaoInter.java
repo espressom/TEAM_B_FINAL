@@ -19,5 +19,7 @@ public interface MemberDaoInter {
 	public void delMem(String m_id);
 
 	public int userPwdChk(MemberVO mvo);
+	
+	public int delMemChk(MemberVO mvo);
 
 }

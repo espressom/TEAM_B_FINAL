@@ -74,5 +74,11 @@ public class MemberService {
 	public void delMem(String m_id) {
 		memberDaoInter.delMem(m_id);
 	}
+	
+	// ·Î±×ÀÎ - Å»Åð È¸¿ø È®ÀÎ
+	public int delMemChk(MemberVO mvo) {
+		
+		return memberDaoInter.delMemChk(mvo);
+	}
 
 }

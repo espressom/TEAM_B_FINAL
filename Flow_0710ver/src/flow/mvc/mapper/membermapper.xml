@@ -17,6 +17,10 @@
 		SYSDATE
 		)
 	</insert>
+	
+	<select id="delMemChk" parameterType="mvo" resultType="int">
+		SELECT M_DIVISION FROM MEMBER WHERE M_ID = #{m_id}
+	</select>
 
 	<select id="loginChk" parameterType="mvo" resultType="mvo">
 		SELECT
@@ -59,9 +63,10 @@
 		WHERE M_ID = #{m_id}
 	</update>
 
-	<delete id="delMem" parameterType="String">
-		delete from member where m_id = #{m_id}
-	</delete>
+	<update id="delMem" parameterType="String">
+		UPDATE MEMBER SET M_DIVISION = 9
+		WHERE M_ID = #{m_id}
+	</update>
 
 	<select id="userChk" parameterType="mvo" resultType="int">
 		SELECT COUNT(*) CNT FROM MEMBER

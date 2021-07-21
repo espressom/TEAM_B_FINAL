@@ -55,11 +55,16 @@ public class MemberDao implements MemberDaoInter {
 
 	@Override
 	public void delMem(String m_id) {
-		ss.delete("member.delMem", m_id);
+		ss.update("member.delMem", m_id);
 	}
 
 	@Override
 	public int userPwdChk(MemberVO mvo) {
 		return ss.selectOne("member.userChk", mvo);
+	}
+
+	@Override
+	public int delMemChk(MemberVO mvo) {
+		return ss.selectOne("member.delMemChk", mvo);
 	}
 }

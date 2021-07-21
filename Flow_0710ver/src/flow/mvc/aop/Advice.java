@@ -35,7 +35,6 @@ public class Advice {
 		StringBuilder sb = new StringBuilder("");
 		if (param.length != 0) {
 			int length = param.length;
-
 			for (int i = 0; i < length; i++) {
 				if (param[i] instanceof String) {
 					sb.append(param[i]);
@@ -53,8 +52,8 @@ public class Advice {
 		LogVO lvo = new LogVO();
 		String methodName = pjp.getSignature().getName();
 		lvo.setRequest(methodName);
-		String[] classNames = pjp.getTarget().getClass().getCanonicalName().split("\\.");
-		String className = classNames[classNames.length - 1];
+		String[] classFullName = pjp.getTarget().getClass().getCanonicalName().split("\\.");
+		String className = classFullName[classFullName.length - 1]; 
 		LOG.info("=================================================");
 		LOG.info("| [LOG]  " + className + " :: " + methodName + " 호출");
 		lvo = getLogInfo(lvo);
@@ -73,7 +72,7 @@ public class Advice {
 			LOG.info("| [B Y]  " + lvo.getM_id());
 		}
 		LOG.info("=================================================");
-		if (lvo.getM_id() == null) {
+		if (lvo.getM_id() == null) { // default
 			lvo.setM_id("");
 		}
 		logDaoInter.addlog(lvo);
@@ -81,13 +80,15 @@ public class Advice {
 	}
 
 	private LogVO getLogInfo(LogVO lvo) {
+		// request 객체 받아오기
 		HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes()))
 				.getRequest();
 		lvo.setM_ip(request.getRemoteAddr());
 		lvo.setUagent(request.getHeader("User-Agent"));
+		// session 받아오기
 		HttpSession session = request.getSession();
 		String m_id = (String) session.getAttribute("sessionID");
-		lvo.setM_id(m_id != null ? m_id : lvo.getM_id()); 
+		lvo.setM_id(m_id != null ? m_id : lvo.getM_id()); // 세션id 있으면 추가 없으면 원래값
 		return lvo;
 	}
 }

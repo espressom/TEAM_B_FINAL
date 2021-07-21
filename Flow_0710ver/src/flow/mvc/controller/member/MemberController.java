@@ -59,7 +59,7 @@ public class MemberController {
 
 	@PostMapping("/loginProcess")
 	public ModelAndView loginProcess(MemberVO mvo, HttpSession session, HttpServletRequest request) {
-		System.out.println("MemberController  - loginProcess ª•∑≥");
+		System.out.println("MemberController  - loginProcess ¡¯¿‘");
 		ModelAndView mav = new ModelAndView();
 		MemberVO loginvo = memberService.loginProcess(mvo);
 

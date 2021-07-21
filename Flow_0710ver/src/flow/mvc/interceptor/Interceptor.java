@@ -1,5 +1,7 @@
 package flow.mvc.interceptor;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,8 +22,12 @@ public class Interceptor extends HandlerInterceptorAdapter {
         Object obj = session.getAttribute("sessionID");
           
         if ( obj == null ){
-            // 로그인이 안되어 있는 상태임으로 로그인 폼으로 다시 돌려보냄(redirect)
-            response.sendRedirect("/Flow_0710ver/loginForm");
+            // 로그인이 안되어 있는 상태일때 로그인 폼으로 다시 돌려보냄
+        	PrintWriter printwriter = response.getWriter();
+        	printwriter.print("<script>alert('로그인페이지로 이동'); location.href='/Flow_0710ver/loginForm';</script>");
+        	printwriter.flush();
+        	printwriter.close();
+        	// preHandle의 return값은 요청이 컨트롤러로 가느냐 마느냐
             return false; 
         }
           

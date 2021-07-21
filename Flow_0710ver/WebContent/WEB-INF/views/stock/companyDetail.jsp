@@ -102,6 +102,29 @@
 				</div>
 
 				<!-- //리스트 -->
+				<!-- 그래프 -->
+				<div id="graph">
+					
+				</div>
+				<br>
+				<!-- 그래프 -->
+				<!-- 뉴스 -->
+				<div class="introWarp">
+					<c:forEach var="e" items="${list}">
+						<div class="intro">
+							<div style="width: 260px; height: 180px;
+							 text-align: center;">
+								<img alt="img" src=${e.img }
+									style="max-width: 260px; 
+									max-height: 180px;">
+							</div>
+							<h5>
+								<a href=${e.href }>${e.title }</a>
+							</h5>
+							<div class="cont">여기 내용 넣으려다 실패</div>
+						</div>
+					</c:forEach>
+				</div>
 
 
 				<div></div>
@@ -111,8 +134,22 @@
 		</div>
 	</div>
 </body>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+	$(function() {
+		$.ajax({
+		    url:'http://192.168.0.12:8099/shop/make_chart?code=${cvo.c_code }',
+		    type:'GET',
+		    dataType:'jsonp',
+		    success:function(data){
+		        console.log(data);
+		        Plotly.plot('graph', data, {});
+		    }
+		});
+	 });
+
+
 	function likeUpdate() {
 	/* 	
 		if ( ${sessionScope.sessionID} == null) {

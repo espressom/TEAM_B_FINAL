@@ -19,7 +19,7 @@
 	<div class="container" style="margin-top: 150px;">
 		<div>
 			<div>
-			<h1>기준금리 확인!</h1>
+			<h1>한국 기준금리</h1>
 				<div id=graph></div>
 			</div>
 		</div>
@@ -29,7 +29,7 @@
 $(function(){
 
         $.ajax({
-            url:'http://192.168.0.25:8099/shop/baseRate?callback',
+            url:'http://192.168.0.5:8099/shop/baseRate?callback',
             type:'GET',
             dataType:'jsonp',
             success:function(data){

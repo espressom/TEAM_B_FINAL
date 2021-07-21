@@ -128,47 +128,31 @@
 			url:"wordcloud",
 			dataType : 'json',
 			success:function(data) {
+				var map = new Map();
 				codes=[];
 				tags=[];
-				for ( var e of data) {
+				for ( var e of data ) { 
 					codes.push(e.c_code);
 					tags.push(e.c_name);
+					map.set(e.c_name,e.c_code);
 				}
 				var words = [];
 				  tags.forEach(t => {
-				    var key = t;
+			  		var key = t;
 				    if (words[key]) {
 				      words[key] = words[key] + 1;
 				    } else {
 				      words[key] = 1;
 				    }
 				  });
-				var words = [];
-				  tags.forEach(t => {
-				    var key = t;
-				    if (words[key]) {
-				      words[key] = words[key] + 1;
-				    } else {
-				      words[key] = 1;
-				    }
-				  });
-				  tags.forEach(t => {
-					    var key = t;
-					    if (words[key]) {
-					      words[key] = words[key] + 1;
-					    } else {
-					      words[key] = 1;
-					    }
-					  });
-				  console.log(words)
-// 				  var tagCloudWords = Object.keys(words).map(w => {
-// 					    return {
-// 					      text: w, weight: words[w], link: 'companyDetail?c_code=' + w
-// 					    };
-// 					  });
+				  
+				  console.log(words);
+				  console.log(map);
+				  
+				  
 				  var tagCloudWords = Object.keys(words).map(w => {
 					    return {
-					      text: w, weight: words[w], link: 'companyDetail?c_code=' + w
+					      text: w, weight: words[w], link: 'companyDetail?c_code='+map.get(w)+'&slike_id=${sessionScope.sessionID}'
 					    };
 					  });
 				  

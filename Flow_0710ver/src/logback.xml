@@ -6,7 +6,7 @@
 		<encoder>
 			<!-- 로그 메시지 패턴 -->
 			<Pattern>
-				%d{HH:mm:ss} %-5level [%c] %msg%n
+				%d{HH:mm:ss} %-5level %msg%n
 			</Pattern>
 		</encoder>
 	</appender>

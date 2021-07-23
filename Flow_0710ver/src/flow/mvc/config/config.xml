@@ -5,5 +5,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="flow.mvc.vo.MemberVO" alias="mvo" />
+		<typeAlias type="flow.mvc.vo.BoardVO" alias="bvo" />
 	</typeAliases>
 </configuration> 

@@ -175,17 +175,31 @@ public class MemberController {
 		System.out.println("pwd :::: " + mvo.getM_pwd());
 		int res = memberService.isValidPwd(mvo);
 		System.out.println("res :::: " + res);
-
 		if (res == 1) {
-
 			return "redirect:/selectUserInfoView";
-
 		} else {
-
 			return "redirect:/";
-
 		}
-
 	}
+	
+	@RequestMapping("/newAccountService")
+	public String newAccountServiceForm() {
+		System.out.println("신규계좌개설 서비스 폼 진입");
+		return "mng/newAccountServiceForm";
+	}
+	
+	@RequestMapping("/newAccount")
+	public String newAccountForm() {
+		System.out.println("신규계좌개설폼 진입");
+		return "mng/newAccountForm";
+	}
+	
+	@RequestMapping("/newAccountSuccess")
+	public String newAccount() {
+		System.out.println("계좌개설 완료");
+		return "mng/newAccountSuccessForm";
+	}
+	
+	
 
 }

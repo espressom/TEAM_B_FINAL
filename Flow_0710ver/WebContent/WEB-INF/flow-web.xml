@@ -20,7 +20,7 @@
 <mvc:annotation-driven/>
 <mvc:resources location="/resources/" mapping="/resources/**"/>
 
-<!-- tiles설정 -->
+<!-- 
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
@@ -35,7 +35,7 @@
 			</list>
 		</property>
 	</bean>
-	<!-- tiles설정  끝-->
+	-->
 
 <!-- String, mav, 리다이렉트 제외 전부 이걸 통해서 매핑 -->
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
